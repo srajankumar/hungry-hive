@@ -5,7 +5,7 @@ const Toast = () => {
     <div>
       <div
         id="toast-default"
-        className="flex fixed bottom-5 right-5 items-center w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+        className="flex fixed bottom-5 right-5 items-center w-full max-w-xs p-4 rounded-lg text-gray-100 bg-black bg-opacity-75 shadow-sm shadow-white"
         role="alert"
       >
         <div className="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-blue-500 bg-blue-100 rounded-lg dark:bg-blue-800 dark:text-blue-200">
@@ -26,10 +26,12 @@ const Toast = () => {
           </svg>
           <span className="sr-only">Fire icon</span>
         </div>
-        <div className="ml-3 text-sm font-normal">Set yourself free.</div>
+        <div className="ml-3 text-sm font-normal">
+          Culinary adventures await
+        </div>
         <button
           type="button"
-          className="ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+          className="ml-auto -mx-1.5 -my-1.5  rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 inline-flex items-center justify-center h-8 w-8 text-gray-100 dark:hover:text-white hover:bg-black hover:bg-opacity-75"
           data-dismiss-target="#toast-default"
           aria-label="Close"
         >

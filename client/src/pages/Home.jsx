@@ -1,109 +1,19 @@
+import Background from "../components/Background";
 import Hero from "../components/Home/Hero";
 import Search from "../components/Home/Search";
 import Toast from "../components/Home/Toast";
+import Cards from "../components/allRecipes";
 
 function Home() {
   return (
     <div>
       <Hero />
       <Search />
-      <div className="flex bg-white flex-wrap">
-        <div className="flex flex-wrap w-1/2">
-          <div className="md:p-2 p-1 w-1/2">
-            <img
-              alt="gallery"
-              className="w-full object-cover h-full object-center block"
-              src="https://dummyimage.com/500x300"
-            />
-          </div>
-          <div className="md:p-2 p-1 w-1/2">
-            <img
-              alt="gallery"
-              className="w-full object-cover h-full object-center block"
-              src="https://dummyimage.com/501x301"
-            />
-          </div>
-          <div className="md:p-2 p-1 w-full">
-            <img
-              alt="gallery"
-              className="w-full h-full object-cover object-center block"
-              src="https://dummyimage.com/600x360"
-            />
-          </div>
-        </div>
-        <div className="flex flex-wrap w-1/2">
-          <div className="md:p-2 p-1 w-full">
-            <img
-              alt="gallery"
-              className="w-full h-full object-cover object-center block"
-              src="https://dummyimage.com/601x361"
-            />
-          </div>
-          <div className="md:p-2 p-1 w-1/2">
-            <img
-              alt="gallery"
-              className="w-full object-cover h-full object-center block"
-              src="https://dummyimage.com/502x302"
-            />
-          </div>
-          <div className="md:p-2 p-1 w-1/2">
-            <img
-              alt="gallery"
-              className="w-full object-cover h-full object-center block"
-              src="https://dummyimage.com/503x303"
-            />
-          </div>
-        </div>
+      {/* Body */}
+      <div>
+        <Background />
+        <Cards />
       </div>
-      <div className="flex bg-white flex-wrap">
-        <div className="flex flex-wrap w-1/2">
-          <div className="md:p-2 p-1 w-1/2">
-            <img
-              alt="gallery"
-              className="w-full object-cover h-full object-center block"
-              src="https://dummyimage.com/500x300"
-            />
-          </div>
-          <div className="md:p-2 p-1 w-1/2">
-            <img
-              alt="gallery"
-              className="w-full object-cover h-full object-center block"
-              src="https://dummyimage.com/501x301"
-            />
-          </div>
-          <div className="md:p-2 p-1 w-full">
-            <img
-              alt="gallery"
-              className="w-full h-full object-cover object-center block"
-              src="https://dummyimage.com/600x360"
-            />
-          </div>
-        </div>
-        <div className="flex flex-wrap w-1/2">
-          <div className="md:p-2 p-1 w-full">
-            <img
-              alt="gallery"
-              className="w-full h-full object-cover object-center block"
-              src="https://dummyimage.com/601x361"
-            />
-          </div>
-          <div className="md:p-2 p-1 w-1/2">
-            <img
-              alt="gallery"
-              className="w-full object-cover h-full object-center block"
-              src="https://dummyimage.com/502x302"
-            />
-          </div>
-          <div className="md:p-2 p-1 w-1/2">
-            <img
-              alt="gallery"
-              className="w-full object-cover h-full object-center block"
-              src="https://dummyimage.com/503x303"
-            />
-          </div>
-        </div>
-      </div>
-
       <Toast />
     </div>
   );

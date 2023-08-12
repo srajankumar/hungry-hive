@@ -3,7 +3,7 @@ import React from "react";
 const Navbar = () => {
   return (
     <div>
-      <nav className="fixed z-50 w-full bg-white shadow-md">
+      <nav className="fixed z-50 w-full text-green-100 backdrop-blur-sm shadow-md">
         <div className="flex flex-wrap items-center justify-between mx-auto p-4">
           <a href="#" className="flex items-center">
             <svg
@@ -27,14 +27,14 @@ const Navbar = () => {
                 d="M8.5 8.99C4.75 8.99 1 11 1 15h15c0-4-3.75-6.01-7.5-6.01zM3.62 13c1.11-1.55 3.47-2.01 4.88-2.01s3.77.46 4.88 2.01H3.62zM1 17h15v2H1zM18 5V1h-2v4h-5l.23 2h9.56l-1.4 14H18v2h1.72c.84 0 1.53-.65 1.63-1.47L23 5h-5z"
               />
             </svg>
-            <span className="self-center text-2xl font-semibold whitespace-nowrap ">
+            <span className="self-center text-transparent bg-clip-text bg-gradient-to-r from-purple-200 to-orange-300 text-2xl font-bold whitespace-nowrap ">
               Hungry Hive
             </span>
           </a>
           <button
             data-collapse-toggle="navbar-dropdown"
             type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden  focus:outline-none focus:ring-2 hover:bg-gray-700 focus:ring-gray-600"
+            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden  focus:outline-none focus:ring-2 hover:bg-gray-700 focus:ring-gray-600"
             aria-controls="navbar-dropdown"
             aria-expanded="false"
           >
@@ -63,7 +63,7 @@ const Navbar = () => {
               <li>
                 <a
                   href="#"
-                  className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-white md:hover:bg-transparent"
+                  className="block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
                 >
                   My Recipes
                 </a>
@@ -71,7 +71,7 @@ const Navbar = () => {
               <li>
                 <a
                   href="#"
-                  className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-white md:hover:bg-transparent"
+                  className="block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
                 >
                   Add Recipes
                 </a>
@@ -79,7 +79,7 @@ const Navbar = () => {
               <li>
                 <a
                   href="#"
-                  className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-white md:hover:bg-transparent"
+                  className="block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
                 >
                   Sign In
                 </a>
@@ -88,7 +88,7 @@ const Navbar = () => {
                 <button
                   id="dropdownNavbarLink"
                   data-dropdown-toggle="dropdownNavbar"
-                  className="flex items-center justify-between w-full  pl-3 pr-4 text-gray-900 rounded  md:border-0 md:p-0 my-2 md:w-auto  md:hover:text-blue-500 focus:text-white border-gray-700 hover:bg-gray-700 md:hover:bg-transparent"
+                  className="flex items-center justify-between w-full  pl-3 pr-4 rounded  md:border-0 md:p-0 my-2 md:w-auto hover:text-gray-300 focus:text-white border-gray-700 hover:bg-gray-700 md:hover:bg-transparent"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -132,7 +132,7 @@ const Navbar = () => {
                     <li>
                       <a
                         href="#"
-                        className="block px-4 py-2 hover:bg-gray-100 hover:text-white"
+                        className="block px-4 py-2 hover:bg-gray-100 hover:text-gray-300"
                       >
                         Source Code
                       </a>
@@ -141,7 +141,7 @@ const Navbar = () => {
                       <a
                         href="https://github.com/srajankumar"
                         target="_blank"
-                        className="block px-4 py-2 hover:bg-gray-100 hover:text-white"
+                        className="block px-4 py-2 hover:bg-gray-100 hover:text-gray-300"
                       >
                         @srajankumar
                       </a>
@@ -150,7 +150,7 @@ const Navbar = () => {
                       <a
                         href="https://github.com/TejasNayak42"
                         target="_blank"
-                        className="block px-4 py-2 hover:bg-gray-100 hover:text-white"
+                        className="block px-4 py-2 hover:bg-gray-100 hover:text-gray-300"
                       >
                         @TejasNayak42
                       </a>
