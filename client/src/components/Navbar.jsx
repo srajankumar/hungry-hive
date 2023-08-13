@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className="fixed z-50 w-full text-green-100 backdrop-blur-sm shadow-md">
+      <nav className="fixed z-50 w-full bg-[#ffffff] text-red-500 shadow-md">
         <div className="flex flex-wrap items-center justify-between mx-auto p-4">
           <Link to="/" className="flex items-center">
             <svg
@@ -40,7 +40,7 @@ const Navbar = () => {
                 d="M8.5 8.99C4.75 8.99 1 11 1 15h15c0-4-3.75-6.01-7.5-6.01zM3.62 13c1.11-1.55 3.47-2.01 4.88-2.01s3.77.46 4.88 2.01H3.62zM1 17h15v2H1zM18 5V1h-2v4h-5l.23 2h9.56l-1.4 14H18v2h1.72c.84 0 1.53-.65 1.63-1.47L23 5h-5z"
               />
             </svg>
-            <span className="self-center text-transparent bg-clip-text bg-gradient-to-r from-purple-200 to-orange-300 text-2xl font-bold whitespace-nowrap ">
+            <span className="main-heading self-center text-blue-500 text-2xl font-bold whitespace-nowrap ">
               Hungry Hive
             </span>
           </Link>
@@ -72,34 +72,34 @@ const Navbar = () => {
             className="hidden w-full md:block md:w-auto"
             id="navbar-dropdown"
           >
-            <ul className="flex font-medium p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0  border-gray-700">
+            <ul className="flex font-bold tracking-wide p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0  border-gray-700">
               <li>
                 <Link
                   to="/my-recipes"
-                  className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
+                  className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded md:hover:bg-transparent"
                 >
                   My Recipes
                 </Link>
               </li>
               <li>
                 <Link
-                  to="add-recipes"
-                  className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
+                  to="create-recipe"
+                  className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded md:hover:bg-transparent"
                 >
-                  Add Recipes
+                  Add Recipe
                 </Link>
               </li>
               <li>
                 {!cookies.access_token ? (
                   <Link
                     to="login"
-                    className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
+                    className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded md:hover:bg-transparent"
                   >
                     Login / Register
                   </Link>
                 ) : (
                   <button
-                    className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
+                    className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded md:hover:bg-transparent"
                     onClick={logout}
                   >
                     Logout
