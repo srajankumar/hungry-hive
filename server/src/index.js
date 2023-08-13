@@ -17,7 +17,7 @@ app.use("/auth", userRouter);
 // auth == endpoint route related to the authentications, and these will be in users.js
 
 mongoose.connect(
-  "mongodb+srv://srajankumar:zoro123@cluster0.7f1yojf.mongodb.net/Cluster0?retryWrites=true&w=majority"
+  "mongodb+srv://srajankumar:zoro123@cluster0.7f1yojf.mongodb.net/recipes?retryWrites=true&w=majority"
 );
 // connect to db
 

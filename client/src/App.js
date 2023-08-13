@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar";
-import AddRecipes from "./pages/addRecipes";
-import MyRecipes from "./pages/myRecipes";
+import CreateRecipe from "./pages/create-recipes";
+import SavedRecipes from "./pages/saved-recipes";
+import Auth from "./pages/auth";
 import Home from "./pages/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
@@ -12,8 +13,17 @@ function App() {
           <Navbar />
           <Routes>
             <Route exact path="/" element={<Home />}></Route>
-            <Route exact path="/my-recipes" element={<MyRecipes />}></Route>
-            <Route exact path="/add-recipes" element={<AddRecipes />}></Route>
+            <Route exact path="/auth" element={<Auth />}></Route>
+            <Route
+              exact
+              path="/create-recipe"
+              element={<CreateRecipe />}
+            ></Route>
+            <Route
+              exact
+              path="/saved-recipes"
+              element={<SavedRecipes />}
+            ></Route>
           </Routes>
           <Footer />
         </div>
