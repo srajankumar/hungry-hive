@@ -1,7 +1,19 @@
 import React from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const [cookies, setCookies] = useCookies(["access_token"]);
+  // grab cookies from the hook to change the Login/Register into logout button
+  const navigate = useNavigate();
+
+  const logout = () => {
+    setCookies("access_token", "");
+    window.localStorage.removeItem("userID");
+    navigate("/auth");
+  };
+
   return (
     <div>
       <nav className="fixed z-50 w-full text-green-100 backdrop-blur-sm shadow-md">
@@ -78,12 +90,21 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <a
-                  href=""
-                  className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
-                >
-                  Sign In
-                </a>
+                {!cookies.access_token ? (
+                  <Link
+                    to="auth"
+                    className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
+                  >
+                    Login / Register
+                  </Link>
+                ) : (
+                  <button
+                    className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
+                    onClick={logout}
+                  >
+                    Logout
+                  </button>
+                )}
               </li>
               <li>
                 <button
