@@ -11,7 +11,6 @@ function Home() {
       <Search />
       {/* Body */}
       <div className="bg-black">
-        {/* <Background /> */}
         <Cards />
       </div>
       {/* <Toast /> */}

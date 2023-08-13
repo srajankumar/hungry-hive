@@ -11,7 +11,7 @@ const Navbar = () => {
   const logout = () => {
     setCookies("access_token", "");
     window.localStorage.removeItem("userID");
-    navigate("/auth");
+    navigate("/login");
   };
 
   return (
@@ -92,7 +92,7 @@ const Navbar = () => {
               <li>
                 {!cookies.access_token ? (
                   <Link
-                    to="auth"
+                    to="login"
                     className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
                   >
                     Login / Register

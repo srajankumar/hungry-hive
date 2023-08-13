@@ -2,7 +2,7 @@ import React from "react";
 
 const Search = () => {
   return (
-    <div className="flex justify-center bg-gradient-to-b from-black to-transparent items-center h-72 md:h-[25rem] lg:h-screen">
+    <div className="flex justify-center bg-gradient-to-b from-[#000000a8] to-transparent items-center h-72 md:h-[25rem] lg:h-screen">
       <form className="md:w-1/2 w-full md:px-0 px-10">
         <div className="flex">
           <label
