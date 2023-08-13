@@ -1,6 +1,7 @@
 import express from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+
 import { UserModel } from "../models/Users.js";
 
 const router = express.Router();
@@ -8,7 +9,7 @@ const router = express.Router();
 router.post("/register", async (req, res) => {
   const { username, password } = req.body;
   const user = await UserModel.findOne({ username });
-  // check if username is there or no
+  // get username is there or no
   if (user) {
     return res.json({ message: "User already exists!" });
   }
@@ -23,6 +24,22 @@ router.post("/register", async (req, res) => {
 // req variable is used to get data from whoeved made the request for the api
 // res used to send data to whoever made the api request
 
-router.post("/login");
+router.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+
+  const user = await UserModel.findOne({ username });
+
+  if (!user) {
+    return res.json({ message: "User doesent exist" });
+  }
+
+  const isPasswordValid = await bcrypt.compare(password, user.password);
+
+  if (!isPasswordValid) {
+    return res.json({ message: "Username or password is incorrect" });
+  }
+  const token = jwt.sign({ id: user._id }, "secret");
+  res.json({ token, userID: user._id });
+});
 
 export { router as userRouter };
