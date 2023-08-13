@@ -5,7 +5,7 @@ const allRecipes = () => {
   return (
     <div>
       <section className="body-font text-gray-400">
-        <div className="container md:px-10 px-5 py-10 mx-auto">
+        <div className="md:px-10 px-4 py-10 mx-auto">
           <div className="flex flex-wrap -m-4">
             <div className="p-4 md:w-1/3">
               <div className="h-full hover:shadow-2xl bg-white bg-opacity-70 transition duration-300 shadow-lg border-gray-200 border-opacity-60 rounded-lg overflow-hidden">

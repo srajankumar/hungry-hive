@@ -40,14 +40,14 @@ const Navbar = () => {
                 d="M8.5 8.99C4.75 8.99 1 11 1 15h15c0-4-3.75-6.01-7.5-6.01zM3.62 13c1.11-1.55 3.47-2.01 4.88-2.01s3.77.46 4.88 2.01H3.62zM1 17h15v2H1zM18 5V1h-2v4h-5l.23 2h9.56l-1.4 14H18v2h1.72c.84 0 1.53-.65 1.63-1.47L23 5h-5z"
               />
             </svg>
-            <span className="main-heading self-center text-blue-500 text-2xl font-bold whitespace-nowrap ">
+            <span className="main-heading self-center md:tracking-wide text-red-500 text-2xl font-bold whitespace-nowrap">
               Hungry Hive
             </span>
           </Link>
           <button
             data-collapse-toggle="navbar-dropdown"
             type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden  focus:outline-none focus:ring-2 hover:bg-gray-700 focus:ring-gray-600"
+            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden  focus:outline-none"
             aria-controls="navbar-dropdown"
             aria-expanded="false"
           >
@@ -75,7 +75,7 @@ const Navbar = () => {
             <ul className="flex font-bold tracking-wide p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0  border-gray-700">
               <li>
                 <Link
-                  to="/my-recipes"
+                  to="saved-recipes"
                   className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded md:hover:bg-transparent"
                 >
                   My Recipes
@@ -110,7 +110,7 @@ const Navbar = () => {
                 <button
                   id="dropdownNavbarLink"
                   data-dropdown-toggle="dropdownNavbar"
-                  className="flex items-center justify-between w-full  pl-3 pr-4 rounded  md:border-0 md:p-0 my-2 md:w-auto hover:text-gray-300 focus:text-white border-gray-700 hover:bg-gray-700 md:hover:bg-transparent"
+                  className="flex items-center justify-between w-full  pl-3 pr-4 rounded  md:border-0 md:p-0 my-2 md:w-auto hover:text-red-600 focus:text-black border-gray-700 hover:bg-gray-700 md:hover:bg-transparent"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +145,7 @@ const Navbar = () => {
                 </button>
                 <div
                   id="dropdownNavbar"
-                  className="z-10 hidden font-normal bg-gray-900 divide-y  rounded-lg shadow w-44 divide-gray-600"
+                  className="z-10 hidden font-normal bg-gray-900 divide-y rounded-lg shadow w-44 divide-gray-600"
                 >
                   <ul
                     className="py-2 text-sm text-gray-200"
@@ -153,7 +153,7 @@ const Navbar = () => {
                   >
                     <li>
                       <a
-                        href="#"
+                        href="https://github.com/srajankumar/hungry-hive"
                         target="_blank"
                         className="block px-4 py-2 hover:bg-black"
                       >

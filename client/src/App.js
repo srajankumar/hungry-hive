@@ -29,7 +29,7 @@ function App() {
               element={<SavedRecipes />}
             ></Route>
           </Routes>
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </Router>
     </div>

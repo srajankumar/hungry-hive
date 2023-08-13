@@ -9,7 +9,7 @@ function Home() {
     <div>
       <Hero />
       <div className="w-full h-52 ">
-        <span className="text-9xl bg-[#0000006a] flex justify-center items-center w-full h-full main-heading text-green-500 drop-shadow-lg">
+        <span className="md:text-7xl text-4xl bg-[#0000006a] flex justify-center items-center w-full h-full main-heading text-green-400 drop-shadow-lg">
           Vegetarian
         </span>
       </div>
@@ -19,7 +19,7 @@ function Home() {
         <Cards />
       </div>
       <div className="w-full h-52 ">
-        <span className="text-9xl bg-[#0000006a] flex justify-center items-center w-full h-full main-heading text-red-500 drop-shadow-lg">
+        <span className="md:text-7xl text-4xl bg-[#0000006a] flex justify-center items-center w-full h-full main-heading text-red-400 drop-shadow-lg">
           Non-Vegetarian
         </span>
       </div>

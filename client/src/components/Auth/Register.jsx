@@ -92,14 +92,14 @@ const Form = ({
   onSubmit,
 }) => {
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className="h-screen bg-[#ffffffd3] flex md:px-0 px-5 justify-center items-center">
       <form onSubmit={onSubmit}>
-        <div class="w-[30rem] backdrop-blur-md bg-[#00000035] rounded-lg p-8 flex flex-col md:ml-auto mt-10 md:mt-0 relative z-10 shadow-md">
-          <h2 class="text-gray-100 text-2xl mb-5 font-bold title-font">
+        <div class="sm:w-[30rem] backdrop-blur-md shadow-2xl bg-white rounded-lg p-8 flex flex-col md:ml-auto mt-10 md:mt-0 relative z-10">
+          <h2 class="text-gray-900 text-2xl mb-5 font-bold title-font">
             {label}
           </h2>
           <div class="relative mb-4">
-            <label htmlFor="username" class="leading-7 text-sm text-gray-300">
+            <label htmlFor="username" class="leading-7 text-sm text-gray-900">
               Username
             </label>
             <input
@@ -111,7 +111,7 @@ const Form = ({
             />
           </div>
           <div class="relative mb-4">
-            <label for="email" class="leading-7 text-sm text-gray-300">
+            <label for="email" class="leading-7 text-sm text-gray-900">
               Password
             </label>
             <input
@@ -124,13 +124,13 @@ const Form = ({
           </div>
           <button
             type="submit"
-            class="text-white my-5 bg-orange-600 border-0 py-2 px-6 focus:outline-none hover:bg-orange-700 rounded text-lg"
+            class="text-white my-5 bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg"
           >
             {label}
           </button>
-          <div class="text-sm text-gray-200 mt-3">
-            Already have an account?{" "}
-            <Link to="/login" className="hover:text-orange-500">
+          <div class="text-sm text-gray-900 mt-3">
+            Do not have an account?{" "}
+            <Link to="/login" className="hover:text-red-600">
               Login
             </Link>
           </div>
