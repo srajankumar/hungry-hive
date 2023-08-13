@@ -10,11 +10,11 @@ function Home() {
       <Hero />
       <Search />
       {/* Body */}
-      <div>
-        <Background />
+      <div className="bg-black">
+        {/* <Background /> */}
         <Cards />
       </div>
-      <Toast />
+      {/* <Toast /> */}
     </div>
   );
 }

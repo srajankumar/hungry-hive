@@ -1,11 +1,12 @@
 import React from "react";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div>
       <nav className="fixed z-50 w-full text-green-100 backdrop-blur-sm shadow-md">
         <div className="flex flex-wrap items-center justify-between mx-auto p-4">
-          <a href="#" className="flex items-center">
+          <Link to="/" className="flex items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="35"
@@ -30,7 +31,7 @@ const Navbar = () => {
             <span className="self-center text-transparent bg-clip-text bg-gradient-to-r from-purple-200 to-orange-300 text-2xl font-bold whitespace-nowrap ">
               Hungry Hive
             </span>
-          </a>
+          </Link>
           <button
             data-collapse-toggle="navbar-dropdown"
             type="button"
@@ -61,25 +62,25 @@ const Navbar = () => {
           >
             <ul className="flex font-medium p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0  border-gray-700">
               <li>
-                <a
-                  href="#"
-                  className="block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
+                <Link
+                  to="/my-recipes"
+                  className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
                 >
                   My Recipes
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
+                <Link
+                  to="add-recipes"
+                  className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
                 >
                   Add Recipes
-                </a>
+                </Link>
               </li>
               <li>
                 <a
-                  href="#"
-                  className="block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
+                  href=""
+                  className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
                 >
                   Sign In
                 </a>
@@ -123,16 +124,17 @@ const Navbar = () => {
                 </button>
                 <div
                   id="dropdownNavbar"
-                  className="z-10 hidden font-normal bg-white divide-y  rounded-lg shadow w-44 divide-gray-600"
+                  className="z-10 hidden font-normal bg-gray-900 divide-y  rounded-lg shadow w-44 divide-gray-600"
                 >
                   <ul
-                    className="py-2 text-sm text-gray-700 "
+                    className="py-2 text-sm text-gray-200"
                     aria-labelledby="dropdownLargeButton"
                   >
                     <li>
                       <a
                         href="#"
-                        className="block px-4 py-2 hover:bg-gray-100 hover:text-gray-300"
+                        target="_blank"
+                        className="block px-4 py-2 hover:bg-black"
                       >
                         Source Code
                       </a>
@@ -141,7 +143,7 @@ const Navbar = () => {
                       <a
                         href="https://github.com/srajankumar"
                         target="_blank"
-                        className="block px-4 py-2 hover:bg-gray-100 hover:text-gray-300"
+                        className="block px-4 py-2 hover:bg-black"
                       >
                         @srajankumar
                       </a>
@@ -150,7 +152,7 @@ const Navbar = () => {
                       <a
                         href="https://github.com/TejasNayak42"
                         target="_blank"
-                        className="block px-4 py-2 hover:bg-gray-100 hover:text-gray-300"
+                        className="block px-4 py-2 hover:bg-black"
                       >
                         @TejasNayak42
                       </a>

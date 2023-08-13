@@ -3,6 +3,7 @@ import AddRecipes from "./pages/addRecipes";
 import MyRecipes from "./pages/myRecipes";
 import Home from "./pages/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Footer from "./components/Footer";
 function App() {
   return (
     <div>
@@ -11,9 +12,10 @@ function App() {
           <Navbar />
           <Routes>
             <Route exact path="/" element={<Home />}></Route>
-            <Route exact path="/add-recipes" element={<AddRecipes />}></Route>
             <Route exact path="/my-recipes" element={<MyRecipes />}></Route>
+            <Route exact path="/add-recipes" element={<AddRecipes />}></Route>
           </Routes>
+          <Footer />
         </div>
       </Router>
     </div>
