@@ -73,7 +73,6 @@ const Navbar = () => {
             id="navbar-dropdown"
           >
             <ul className="flex font-bold tracking-wide p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0  border-gray-700">
-              
               <li>
                 <Link
                   to="saved-recipes"
@@ -95,7 +94,7 @@ const Navbar = () => {
                   to="about-us"
                   className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded md:hover:bg-transparent"
                 >
-                   About Us
+                  About Us
                 </Link>
               </li>
               <li>
