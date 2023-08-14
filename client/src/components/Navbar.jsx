@@ -79,10 +79,18 @@ const Navbar = () => {
               </li>
               <li>
                 <a
-                  href=""
+                  href="/cred"
                   className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
                 >
                   Sign In
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/login"
+                  className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
+                >
+                  Log In
                 </a>
               </li>
               <li>

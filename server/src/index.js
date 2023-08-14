@@ -11,6 +11,6 @@ app.use(cors());
 
 app.use("/auth",userRouter)
 
-mongoose.connect("mongodb+srv://tejasnayakc42:TejasNayakB175@recipes.uasxwp6.mongodb.net/Recipe");
+mongoose.connect("mongodb+srv://srajankumar:zoro123@cluster0.7f1yojf.mongodb.net/recipes?retryWrites=true&w=majority");
 
-app.listen(3000, () => console.log("Server is running at port 3000..."))
+app.listen(3001, () => console.log("Server is running at port 3001..."))

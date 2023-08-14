@@ -10,7 +10,7 @@ function Home() {
       <Hero />
       <Search />
       {/* Body */}
-      <div className="bg-black">
+      <div className="bg-white">
         {/* <Background /> */}
         <Cards />
       </div>
