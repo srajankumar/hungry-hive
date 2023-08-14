@@ -15,47 +15,52 @@ const auth = () => {
 
 export default auth;
 
-const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+// const Login = () => {
+//   const [username, setUsername] = useState("");
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
 
-  const [_, setCookies] = useCookies(["access_token"]);
+//   const [_, setCookies] = useCookies(["access_token"]);
 
-  const navigate = useNavigate();
+//   const navigate = useNavigate();
 
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await axios.post("http://localhost:3001/auth/login", {
-        username,
-        password,
-      });
+//   const onSubmit = async (event) => {
+//     event.preventDefault();
+//     try {
+//       const response = await axios.post("http://localhost:3001/auth/login", {
+//         username,
+//         email,
+//         password,
+//       });
 
-      setCookies("access_token", response.data.token);
-      window.localStorage.setItem("userID", response.data.userID);
-      // save the token id in localstorage
+//       setCookies("access_token", response.data.token);
+//       window.localStorage.setItem("userID", response.data.userID);
+//       // save the token id in localstorage
 
-      navigate("/");
-      // navigates to home page after logging in
-    } catch (error) {
-      console.error(error);
-    }
-  };
+//       navigate("/");
+//       // navigates to home page after logging in
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
 
-  return (
-    <Form
-      username={username}
-      setUsername={setUsername}
-      password={password}
-      setPassword={setPassword}
-      label="Login"
-      onSubmit={onSubmit}
-    />
-  );
-};
+//   return (
+//     <Form
+//       username={username}
+//       email={email}
+//       setEmail={setEmail}
+//       setUsername={setUsername}
+//       password={password}
+//       setPassword={setPassword}
+//       label="Login"
+//       onSubmit={onSubmit}
+//     />
+//   );
+// };
 
 const Register = () => {
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const onSubmit = async (event) => {
@@ -63,6 +68,7 @@ const Register = () => {
     try {
       await axios.post("http://localhost:3001/auth/register", {
         username,
+        email,
         password,
       });
       alert("Registration completed. Login to continue");
@@ -74,6 +80,8 @@ const Register = () => {
   return (
     <Form
       username={username}
+      email={email}
+      setEmail={setEmail}
       setUsername={setUsername}
       password={password}
       setPassword={setPassword}
@@ -86,6 +94,8 @@ const Register = () => {
 const Form = ({
   username,
   setUsername,
+  email,
+  setEmail,
   password,
   setPassword,
   label,
@@ -98,6 +108,18 @@ const Form = ({
           <h2 class="text-gray-900 text-2xl mb-5 font-bold title-font">
             {label}
           </h2>
+          <div class="relative mb-4">
+            <label htmlFor="email" class="leading-7 text-sm text-gray-900">
+              Email
+            </label>
+            <input
+              type="text"
+              id="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+            />
+          </div>
           <div class="relative mb-4">
             <label htmlFor="username" class="leading-7 text-sm text-gray-900">
               Username
