@@ -7,7 +7,7 @@ Your Ultimate Recipe Destination for Foodie Adventures!
 1. Fork and Clone the repository to your local machine
 
 ```bash
-git clone https://github.com/<your-username>/<repo-name>.git
+https://github.com/srajankumar/hungry-hive.git
 ```
 
 2. Install the dependencies
