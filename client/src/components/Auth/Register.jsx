@@ -15,53 +15,12 @@ const auth = () => {
 
 export default auth;
 
-// const Login = () => {
-//   const [username, setUsername] = useState("");
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-
-//   const [_, setCookies] = useCookies(["access_token"]);
-
-//   const navigate = useNavigate();
-
-//   const onSubmit = async (event) => {
-//     event.preventDefault();
-//     try {
-//       const response = await axios.post("http://localhost:3001/auth/login", {
-//         username,
-//         email,
-//         password,
-//       });
-
-//       setCookies("access_token", response.data.token);
-//       window.localStorage.setItem("userID", response.data.userID);
-//       // save the token id in localstorage
-
-//       navigate("/");
-//       // navigates to home page after logging in
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   };
-
-//   return (
-//     <Form
-//       username={username}
-//       email={email}
-//       setEmail={setEmail}
-//       setUsername={setUsername}
-//       password={password}
-//       setPassword={setPassword}
-//       label="Login"
-//       onSubmit={onSubmit}
-//     />
-//   );
-// };
-
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const onSubmit = async (event) => {
     event.preventDefault(); // wont reftresh the page
@@ -72,6 +31,7 @@ const Register = () => {
         password,
       });
       alert("Registration completed. Login to continue");
+      navigate("/login");
     } catch (error) {
       console.error(error);
     }

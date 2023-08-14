@@ -1,7 +1,7 @@
-import Background from "../components/Background";
+// import Background from "../components/Background";
 import Hero from "../components/Home/Hero";
 // import Search from "../components/Home/Search";
-import Toast from "../components/Home/Toast";
+// import Toast from "../components/Home/Toast";
 import Cards from "../components/allRecipes";
 
 function Home() {
