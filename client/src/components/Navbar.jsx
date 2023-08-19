@@ -1,17 +1,17 @@
 import React from "react";
-import { BrowserRouter as  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 const Navbar = () => {
-  const [cookies, setCookies]= useCookies(["access_token"])
+  const [cookies, setCookies] = useCookies(["access_token"]);
   const Navigate = useNavigate();
 
-  const logout = () =>{
-    setCookies("access_token","")
-    window.localStorage.removeItem("userID")
-    Navigate("/")
-  }
+  const logout = () => {
+    setCookies("access_token", "");
+    window.localStorage.removeItem("userID");
+    Navigate("/");
+  };
   return (
     <div>
       <nav className="fixed z-50 w-full text-green-100 backdrop-blur-sm shadow-md">
@@ -59,9 +59,9 @@ const Navbar = () => {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 1h15M1 7h15M1 13h15"
               />
             </svg>
@@ -89,19 +89,29 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  href="/auth"
+                  to="/auth"
                   className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
                 >
                   Sign In
                 </Link>
               </li>
               <li>
-              {!cookies.access_token ?(<Link
+                {!cookies.access_token ? (
+                  <Link
+                    to="/login"
+                    className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
+                  >
+                    Login
+                  </Link>
+                ) : (
+                  <button onClick={logout}>Log Out</button>
+                )}
+                {/* {!cookies.access_token ?(<Link
                   href="/login"
                   className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
                 >
                   Login
-                </Link>):<button onClick={logout} >Log Out</button>}
+                </Link>):<button onClick={logout} >Log Out</button>} */}
               </li>
               <li>
                 <button
@@ -118,9 +128,9 @@ const Navbar = () => {
                     <path
                       fill="none"
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
                       d="M5.75 14.25s-.5-2 .5-3c0 0-2 0-3.5-1.5s-1-4.5 0-5.5c-.5-1.5.5-2.5.5-2.5s1.5 0 2.5 1c1-.5 3.5-.5 4.5 0c1-1 2.5-1 2.5-1s1 1 .5 2.5c1 1 1.5 4 0 5.5s-3.5 1.5-3.5 1.5c1 1 .5 3 .5 3m-5-.5c-1.5.5-3-.5-3.5-1"
                     />
                   </svg>
@@ -133,9 +143,9 @@ const Navbar = () => {
                   >
                     <path
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="m1 1 4 4 4-4"
                     />
                   </svg>
@@ -150,8 +160,8 @@ const Navbar = () => {
                   >
                     <li>
                       <a
-                        href="#"
-                        target="_blank"
+                        href="/"
+                        target="_#"
                         className="block px-4 py-2 hover:bg-black"
                       >
                         Source Code
@@ -160,7 +170,7 @@ const Navbar = () => {
                     <li>
                       <a
                         href="https://github.com/srajankumar"
-                        target="_blank"
+                        target="#"
                         className="block px-4 py-2 hover:bg-black"
                       >
                         @srajankumar
@@ -169,7 +179,7 @@ const Navbar = () => {
                     <li>
                       <a
                         href="https://github.com/TejasNayak42"
-                        target="_blank"
+                        target="#"
                         className="block px-4 py-2 hover:bg-black"
                       >
                         @TejasNayak42
