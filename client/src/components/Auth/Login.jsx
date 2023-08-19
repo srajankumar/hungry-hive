@@ -35,7 +35,7 @@ const Login = () => {
       window.localStorage.setItem("userID", response.data.userID);
       // save the token id in localstorage
 
-      navigate("/");
+      navigate("/home");
       // navigates to home page after logging in
     } catch (error) {
       console.error(error);

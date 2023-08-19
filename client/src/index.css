@@ -28,3 +28,21 @@ body {
 .main-heading {
   font-family: "Montserrat", sans-serif;
 }
+
+video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+}
+
+.hero-image {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+}

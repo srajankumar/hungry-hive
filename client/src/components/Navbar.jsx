@@ -16,9 +16,9 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className="fixed z-50 w-full bg-[#ffffff] text-red-500 shadow-md">
+      <nav className="fixed z-30 w-full bg-[#ffffff] text-red-500 shadow-md">
         <div className="flex flex-wrap items-center justify-between mx-auto p-4">
-          <Link to="/" className="flex items-center">
+          <Link to="/home" className="flex items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="35"
@@ -74,24 +74,32 @@ const Navbar = () => {
           >
             <ul className="flex font-bold tracking-wide p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0  border-gray-700">
               <li>
-                <Link
-                  to="saved-recipes"
-                  className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded md:hover:bg-transparent"
-                >
-                  My Recipes
-                </Link>
+                {cookies.access_token ? (
+                  <Link
+                    to="saved-recipes"
+                    className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded md:hover:bg-transparent"
+                  >
+                    My Recipes
+                  </Link>
+                ) : (
+                  <></>
+                )}
+              </li>
+              <li>
+                {cookies.access_token ? (
+                  <Link
+                    to="create-recipe"
+                    className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded md:hover:bg-transparent"
+                  >
+                    Add Recipe
+                  </Link>
+                ) : (
+                  <></>
+                )}
               </li>
               <li>
                 <Link
-                  to="create-recipe"
-                  className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded md:hover:bg-transparent"
-                >
-                  Add Recipe
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="about-us"
+                  to="/about-us"
                   className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded md:hover:bg-transparent"
                 >
                   About Us
@@ -100,7 +108,7 @@ const Navbar = () => {
               <li>
                 {!cookies.access_token ? (
                   <Link
-                    to="login"
+                    to="/login"
                     className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded md:hover:bg-transparent"
                   >
                     Login / Register
