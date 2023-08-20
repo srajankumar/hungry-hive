@@ -1,3 +1,8 @@
+## Hungry Hive
+
+A MERN stack based recipe app
+
+<!--
 ## Hungy Hive
 
 Your Ultimate Recipe Destination for Foodie Adventures!
@@ -41,3 +46,5 @@ yarn start
 - [@srajankumar](https://github.com/srajankumar)
 - [@TejasNayak42](https://github.com/TejasNayak42)
 - [@shivaninuji](https://github.com/shivaninuji)
+
+-->
