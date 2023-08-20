@@ -43,7 +43,7 @@ yarn start
 
 5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Authors
+### Authors
 
 - [@srajankumar](https://github.com/srajankumar)
 - [@TejasNayak42](https://github.com/TejasNayak42)
