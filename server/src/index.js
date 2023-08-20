@@ -21,8 +21,23 @@ app.use("/auth", userRouter);
 // auth == endpoint route related to the authentications, and these will be in users.js
 
 mongoose.connect(
-  `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.7f1yojf.mongodb.net/recipes?retryWrites=true&w=majority`
+  `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.7f1yojf.mongodb.net/recipes?retryWrites=true&w=majority`,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
 );
+
+const db = mongoose.connection;
+
+db.on("error", (error) => {
+  console.error("MongoDB connection error:", error);
+});
+
+db.once("open", () => {
+  console.log("Connected to MongoDB database!");
+});
+
 // connect to db
 
 app.listen(3001, () => console.log("Server started and running at 3001"));
