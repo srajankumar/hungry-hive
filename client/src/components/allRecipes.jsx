@@ -2,60 +2,66 @@ import React from "react";
 import Tilt from "react-parallax-tilt";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import { useGetUserID } from "../hooks/useGetUserID";
 const AllRecipes = () => {
+  const userID = useGetUserID()
   const [recipe,setRecipes]=useState([])
+  const [savedRecipes,setSavedRecipes]=useState([])
   useEffect(()=>{
     const fetchRecipe = async ()=>{
       try{
        const response= await axios.get("http://localhost:3001/recipes")
        setRecipes(response.data)
        console.log(response.data)
+      
       }catch(err){
         console.error(err)
       }
     }
+
+    const fetchSavedRecipe = async ()=>{
+      try{
+       const response= await axios.get(`http://localhost:3001/recipes/myRecipes/ids/${userID}`)
+       setSavedRecipes(response.data.savedRecipes)
+      }catch(err){
+        console.error(err)
+      }
+    }
+
     fetchRecipe()
-  },[])
+    fetchSavedRecipe()
+  },[userID])
+
+  const saveRecipe= async(recipeID)=>{
+    try{
+      const response= await axios.put("http://localhost:3001/recipes",{recipeID,userID})
+      console.log(response)
+     }catch(err){
+       console.error(err)
+     }
+  }
   return (
-    // <div className="text-white">
-    //   <h1>
-    //     recipes
-    //   </h1>
-    //   <ul>
-    //   {recipe.map((recipe)=>(
-    //     <li key={recipe._id}>
-    //       <div>
-    //         <h2>
-    //           {recipe.name}
-    //         </h2>
-    //       </div>
-    //       <div>
-    //         <p>
-    //           {recipe.instructions}
-    //         </p>
-    //       </div>
-    //       <img src={recipe.imageUrl} alt={recipe.name} />
-    //       <p>Cooking Time:{recipe.cookingTime} (minutes)</p>
-    //     </li>
-    //   ))}
-    //   </ul>
-    // </div>
+    
     <div>
       {recipe.map((recipe)=>(
-      <section className="body-font text-gray-400">
+      <section className="body-font text-gray-400"key={recipe._id}>
         <div className="container md:px-10 px-5 py-10 mx-auto">
           <div className="flex flex-wrap -m-4">
             <div className="p-4 md:w-1/3">
               <Tilt>
                 
-                  <div className="h-full hover:shadow-2xl bg-black bg-opacity-70 hover:shadow-zinc-700 shadow-white transition duration-300 shadow-sm border-gray-200 border-opacity-60 rounded-lg overflow-hidden" key={recipe._id}>
+                  <div className="h-full hover:shadow-2xl bg-black bg-opacity-70 hover:shadow-zinc-700 shadow-white transition duration-300 shadow-sm border-gray-200 border-opacity-60 rounded-lg overflow-hidden" >
                   <img
                     className="lg:h-48 md:h-36 w-full object-cover object-center"
                     src={recipe.imageUrl}
                     alt={recipe.name}
                   />
                   <div className="p-6">
+                  <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                    
+                      <button onClick={()=>saveRecipe(recipe._id)}>Save</button>
+                    </h2>
+                    {savedRecipes.includes(recipe._id)&&(<h1>Already Saved!</h1>)}
                     <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
                       {recipe.cookingTime} (minutes)
                     </h2>
