@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import axios from "axios"
 import { useGetUserID } from "../hooks/useGetUserID.js";
 import {useNavigate} from "react-router-dom"
+import {useCookies} from "react-cookie"
 
 const AddRecipes = () => {
   const userID= useGetUserID()
   const navigate= useNavigate()
+  const [cookies,]= useCookies(["access_token"])
   const [recipe, setRecipe] = useState({
     name: "",
     ingredients: [],
@@ -32,7 +34,7 @@ const AddRecipes = () => {
   const onSubmit = async(event)=>{
     event.preventDefault()
     try{
-      await axios.post("http://localhost:3001/recipes", recipe)
+      await axios.post("http://localhost:3001/recipes", recipe,{headers:{authorization:cookies.access_token}})
       alert("Recipe Added!")
       navigate("/")
     }catch(err){
@@ -64,20 +66,6 @@ const AddRecipes = () => {
                   onChange={handleChange}
                 />
               </div>
-              {/* <div>
-                <label
-                  htmlFor="Description"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Description
-                </label>
-                <input
-                  type="text"
-                  name="description"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  onChange={handleChange}
-                />
-              </div> */}
               <div>
                 <label
                   htmlFor="ingredients"

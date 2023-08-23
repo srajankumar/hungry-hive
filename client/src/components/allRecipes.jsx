@@ -3,10 +3,14 @@ import Tilt from "react-parallax-tilt";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useGetUserID } from "../hooks/useGetUserID";
+import {useCookies} from "react-cookie"
+
 const AllRecipes = () => {
   const userID = useGetUserID()
   const [recipe,setRecipes]=useState([])
   const [savedRecipes,setSavedRecipes]=useState([])
+  const [cookies,]= useCookies(["access_token"])
+
   useEffect(()=>{
     const fetchRecipe = async ()=>{
       try{
@@ -21,7 +25,7 @@ const AllRecipes = () => {
 
     const fetchSavedRecipe = async ()=>{
       try{
-       const response= await axios.get(`http://localhost:3001/recipes/myRecipes/ids/${userID}`)
+       const response= await axios.get(`http://localhost:3001/recipes/addRecipes/ids/${userID}`)
        setSavedRecipes(response.data.savedRecipes)
       }catch(err){
         console.error(err)
@@ -29,17 +33,21 @@ const AllRecipes = () => {
     }
 
     fetchRecipe()
+    if((cookies.access_token))
     fetchSavedRecipe()
-  },[userID])
+  },[])
 
   const saveRecipe= async(recipeID)=>{
     try{
-      const response= await axios.put("http://localhost:3001/recipes",{recipeID,userID})
-      console.log(response)
+      const response= await axios.put("http://localhost:3001/recipes",{recipeID,userID},{headers:{authorization:cookies.access_token}})
+      setSavedRecipes(response.data.savedRecipes)
      }catch(err){
        console.error(err)
      }
   }
+
+  const isRecipeSaved = (id) => savedRecipes.includes(id);
+
   return (
     
     <div>
@@ -59,9 +67,9 @@ const AllRecipes = () => {
                   <div className="p-6">
                   <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
                     
-                      <button onClick={()=>saveRecipe(recipe._id)}>Save</button>
+                      <button onClick={()=>saveRecipe(recipe._id)} disabled={isRecipeSaved(recipe._id)}>{isRecipeSaved(recipe._id)?"Saved":"Save"}</button>
                     </h2>
-                    {savedRecipes.includes(recipe._id)&&(<h1>Already Saved!</h1>)}
+                    
                     <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
                       {recipe.cookingTime} (minutes)
                     </h2>
