@@ -1,52 +1,44 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
-import axios from "axios";
-import { useCookies } from "react-cookie";
-import { useNavigate } from "react-router-dom";
-// hook used to navigate to any pages
-
-const auth = () => {
+import React, { useState } from 'react'
+import axios from "axios"
+import {useCookies} from "react-cookie"
+import {useNavigate} from "react-router-dom"
+export const Register = () => {
   return (
     <div>
-      <Login />
+      <Register />
     </div>
   );
 };
-
-export default auth;
-
-const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [, setCookies] = useCookies(["access_token"]);
-  const Navigate = useNavigate();
-
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await axios.post("http://localhost:3001/auth/login", {
-        username,
-        password,
-      });
-      setCookies("access_token", response.data.token);
-      window.localStorage.setItem("userID", response.data.userID);
-      Navigate("/");
-    } catch (err) {
-      console.error(err);
+const LogIn = () => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [,setCookies]= useCookies(["access_token"])
+    const Navigate = useNavigate()
+    
+    const onSubmit =async (event)=>{
+        event.preventDefault()
+        try{
+          const response = await axios.post("http://localhost:3001/auth/login",{username,password})
+          setCookies("access_token",response.data.token)
+          window.localStorage.setItem("userID",response.data.userID)
+          Navigate("/")
+        }catch(err){
+            console.error(err)
+        }
     }
+    return (
+      <Form
+        username={username}
+        setUsername={setUsername}
+        password={password}
+        setPassword={setPassword}
+        label="Login"
+        onSubmit={onSubmit}
+      />
+    );
   };
+  
 
-  return (
-    <Form
-      username={username}
-      setUsername={setUsername}
-      password={password}
-      setPassword={setPassword}
-      label="Login"
-      onSubmit={onSubmit}
-    />
-  );
-};
 
 const Form = ({
   username,
@@ -57,50 +49,61 @@ const Form = ({
   onSubmit,
 }) => {
   return (
-    <div className="h-screen bg-[#ffffffd3] md:px-0 px-5 flex justify-center items-center">
-      <form onSubmit={onSubmit}>
-        <div class="sm:w-[30rem] backdrop-blur-md shadow-2xl bg-white rounded-lg p-8 flex flex-col md:ml-auto mt-10 md:mt-0 relative z-10">
-          <h2 class="text-gray-900 text-2xl mb-5 font-bold title-font">
-            {label}
-          </h2>
-          <div class="relative mb-4">
-            <label htmlFor="username" class="leading-7 text-sm text-gray-900">
-              Username
-            </label>
-            <input
-              type="text"
-              id="username"
-              value={username}
-              onChange={(event) => setUsername(event.target.value)}
-              class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-            />
-          </div>
-          <div class="relative mb-4">
-            <label for="email" class="leading-7 text-sm text-gray-900">
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-            />
-          </div>
-          <button
-            type="submit"
-            class="text-white my-5 bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg"
-          >
-            {label}
-          </button>
-          <div class="text-sm text-gray-900 mt-3">
-            Do not have an account?{" "}
-            <Link to="/register" className="hover:text-red-600">
-              Sign Up
-            </Link>
+    <section className="bg-gray-50 dark:bg-gray-900">
+      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+              {label}
+            </h1>
+            <form className="space-y-4 md:space-y-6" action="#" onSubmit={onSubmit}>
+              <div>
+                <label
+                  for="username"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Username
+                </label>
+                <input
+                  type="text"
+                  name="username"
+                  id="username"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Tejas"
+                  required=""
+                  value={username}
+                  onChange={(event) => setUsername(event.target.value)}
+                />
+              </div>
+              <div>
+                <label
+                  for="password"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Password
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="••••••••"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  required=""
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                />
+              </div>
+              <div className="flex items-center justify-between"></div>
+              <button
+                type="submit"
+                className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+              >
+                {label}
+              </button>
+            </form>
           </div>
         </div>
-      </form>
-    </div>
+      </div>
+    </section>
   );
 };

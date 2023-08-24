@@ -71,6 +71,7 @@ const Navbar = () => {
             id="navbar-dropdown"
           >
             <ul className="flex font-medium p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0  border-gray-700">
+              
               <li>
                 <Link
                   to="add-recipes"
@@ -97,19 +98,20 @@ const Navbar = () => {
                   </Link>
                 ) : (
                   <>
-                    <ul>
-                      <li>
-                        <Link
-                          to="/my-recipes"
-                          className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
-                        >
-                          My Recipes
-                        </Link>
-                      </li>
-                    </ul>
-
-                    <button onClick={logout}>Log Out</button>
+                  <ul>
+                  <li>
+                <Link
+                  to="/my-recipes"
+                  className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
+                >
+                  My Recipes
+                </Link>
+              </li>
+                  </ul>
+                 
+              <button onClick={logout}>Log Out</button>
                   </>
+                  
                 )}
                 {/* {!cookies.access_token ?(<Link
                   href="/login"

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "axios"
 import { useGetUserID } from "../hooks/useGetUserID.js";
-import { useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
+import {useNavigate} from "react-router-dom"
+import {useCookies} from "react-cookie"
 
 const AddRecipes = () => {
-  const userID = useGetUserID();
-  const navigate = useNavigate();
-  const [cookies] = useCookies(["access_token"]);
+  const userID= useGetUserID()
+  const navigate= useNavigate()
+  const [cookies,]= useCookies(["access_token"])
   const [recipe, setRecipe] = useState({
     name: "",
     ingredients: [],
@@ -31,18 +31,16 @@ const AddRecipes = () => {
   const addIngredients = () => {
     setRecipe({ ...recipe, ingredients: [...recipe.ingredients, ""] });
   };
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      await axios.post("http://localhost:3001/recipes", recipe, {
-        headers: { authorization: cookies.access_token },
-      });
-      alert("Recipe Added!");
-      navigate("/");
-    } catch (err) {
-      console.error(err);
+  const onSubmit = async(event)=>{
+    event.preventDefault()
+    try{
+      await axios.post("http://localhost:3001/recipes", recipe,{headers:{authorization:cookies.access_token}})
+      alert("Recipe Added!")
+      navigate("/")
+    }catch(err){
+      console.error(err)
     }
-  };
+  }
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-6 mx-auto md:h-screen lg:py-0">
@@ -51,11 +49,7 @@ const AddRecipes = () => {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Add Recipes
             </h1>
-            <form
-              className="space-y-4 md:space-y-6"
-              action="#"
-              onSubmit={onSubmit}
-            >
+            <form className="space-y-4 md:space-y-6" action="#" onSubmit={onSubmit}>
               <div>
                 <label
                   htmlFor="name"
@@ -89,9 +83,7 @@ const AddRecipes = () => {
                     onChange={(event) => handleIngredientChange(event, idx)}
                   />
                 ))}
-                <button onClick={addIngredients} type="button">
-                  Add Ingredient
-                </button>
+                <button onClick={addIngredients} type="button">Add Ingredient</button>
               </div>
               <div>
                 <label
