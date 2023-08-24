@@ -25,13 +25,13 @@ router.post("/", verifyToken, async (req, res) => {
   }
 });
 
-router.put("/", verifyToken,async (req, res) => {
+router.put("/", verifyToken, async (req, res) => {
   try {
     const recipe = await RecipeModel.findById(req.body.recipeID);
     const user = await UserModel.findById(req.body.userID);
     user.savedRecipes.push(recipe);
     await user.save();
-    res.json({ savedRecipes :user.savedRecipes});
+    res.json({ savedRecipes: user.savedRecipes });
   } catch (err) {
     res.json(err);
   }
