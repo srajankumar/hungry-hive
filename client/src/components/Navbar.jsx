@@ -1,24 +1,22 @@
 import React from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
-import { useCookies } from "react-cookie";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 const Navbar = () => {
   const [cookies, setCookies] = useCookies(["access_token"]);
-  // grab cookies from the hook to change the Login/Register into logout button
-  const navigate = useNavigate();
+  const Navigate = useNavigate();
 
   const logout = () => {
     setCookies("access_token", "");
     window.localStorage.removeItem("userID");
-    navigate("/login");
+    Navigate("/");
   };
-
   return (
     <div>
-      <nav className="fixed z-30 w-full bg-[#ffffff] text-red-500 shadow-md">
+      <nav className="fixed z-50 w-full text-green-100 backdrop-blur-sm shadow-md">
         <div className="flex flex-wrap items-center justify-between mx-auto p-4">
-          <Link to="/home" className="flex items-center">
+          <Link to="/" className="flex items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="35"
@@ -40,14 +38,14 @@ const Navbar = () => {
                 d="M8.5 8.99C4.75 8.99 1 11 1 15h15c0-4-3.75-6.01-7.5-6.01zM3.62 13c1.11-1.55 3.47-2.01 4.88-2.01s3.77.46 4.88 2.01H3.62zM1 17h15v2H1zM18 5V1h-2v4h-5l.23 2h9.56l-1.4 14H18v2h1.72c.84 0 1.53-.65 1.63-1.47L23 5h-5z"
               />
             </svg>
-            <span className="main-heading self-center md:tracking-wide text-red-500 text-2xl font-bold whitespace-nowrap">
+            <span className="self-center text-transparent bg-clip-text bg-gradient-to-r from-purple-200 to-orange-300 text-2xl font-bold whitespace-nowrap ">
               Hungry Hive
             </span>
           </Link>
           <button
             data-collapse-toggle="navbar-dropdown"
             type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden  focus:outline-none"
+            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden  focus:outline-none focus:ring-2 hover:bg-gray-700 focus:ring-gray-600"
             aria-controls="navbar-dropdown"
             aria-expanded="false"
           >
@@ -61,9 +59,9 @@ const Navbar = () => {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 1h15M1 7h15M1 13h15"
               />
             </svg>
@@ -72,61 +70,59 @@ const Navbar = () => {
             className="hidden w-full md:block md:w-auto"
             id="navbar-dropdown"
           >
-            <ul className="flex font-bold tracking-wide p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0  border-gray-700">
+            <ul className="flex font-medium p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0  border-gray-700">
               <li>
-                {cookies.access_token ? (
-                  <Link
-                    to="saved-recipes"
-                    className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded md:hover:bg-transparent"
-                  >
-                    My Recipes
-                  </Link>
-                ) : (
-                  <></>
-                )}
-              </li>
-              <li>
-                {cookies.access_token ? (
-                  <Link
-                    to="create-recipe"
-                    className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded md:hover:bg-transparent"
-                  >
-                    Add Recipe
-                  </Link>
-                ) : (
-                  <></>
-                )}
+                <Link
+                  to="add-recipes"
+                  className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
+                >
+                  Add Recipes
+                </Link>
               </li>
               <li>
                 <Link
-                  to="/about-us"
-                  className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded md:hover:bg-transparent"
+                  to="/auth"
+                  className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
                 >
-                  About Us
+                  Sign In
                 </Link>
               </li>
               <li>
                 {!cookies.access_token ? (
                   <Link
                     to="/login"
-                    className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded md:hover:bg-transparent"
+                    className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
                   >
-                    Login / Register
+                    Login
                   </Link>
                 ) : (
-                  <button
-                    className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded md:hover:bg-transparent"
-                    onClick={logout}
-                  >
-                    Logout
-                  </button>
+                  <>
+                    <ul>
+                      <li>
+                        <Link
+                          to="/my-recipes"
+                          className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
+                        >
+                          My Recipes
+                        </Link>
+                      </li>
+                    </ul>
+
+                    <button onClick={logout}>Log Out</button>
+                  </>
                 )}
+                {/* {!cookies.access_token ?(<Link
+                  href="/login"
+                  className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
+                >
+                  Login
+                </Link>):<button onClick={logout} >Log Out</button>} */}
               </li>
               <li>
                 <button
                   id="dropdownNavbarLink"
                   data-dropdown-toggle="dropdownNavbar"
-                  className="flex items-center justify-between w-full  pl-3 pr-4 rounded  md:border-0 md:p-0 my-2 md:w-auto hover:text-red-600 focus:text-black border-gray-700 hover:bg-gray-700 md:hover:bg-transparent"
+                  className="flex items-center justify-between w-full  pl-3 pr-4 rounded  md:border-0 md:p-0 my-2 md:w-auto hover:text-gray-300 focus:text-white border-gray-700 hover:bg-gray-700 md:hover:bg-transparent"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -137,9 +133,9 @@ const Navbar = () => {
                     <path
                       fill="none"
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
                       d="M5.75 14.25s-.5-2 .5-3c0 0-2 0-3.5-1.5s-1-4.5 0-5.5c-.5-1.5.5-2.5.5-2.5s1.5 0 2.5 1c1-.5 3.5-.5 4.5 0c1-1 2.5-1 2.5-1s1 1 .5 2.5c1 1 1.5 4 0 5.5s-3.5 1.5-3.5 1.5c1 1 .5 3 .5 3m-5-.5c-1.5.5-3-.5-3.5-1"
                     />
                   </svg>
@@ -152,16 +148,16 @@ const Navbar = () => {
                   >
                     <path
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="m1 1 4 4 4-4"
                     />
                   </svg>
                 </button>
                 <div
                   id="dropdownNavbar"
-                  className="z-10 hidden font-normal bg-gray-900 divide-y rounded-lg shadow w-44 divide-gray-600"
+                  className="z-10 hidden font-normal bg-gray-900 divide-y  rounded-lg shadow w-44 divide-gray-600"
                 >
                   <ul
                     className="py-2 text-sm text-gray-200"
@@ -169,8 +165,8 @@ const Navbar = () => {
                   >
                     <li>
                       <a
-                        href="https://github.com/srajankumar/hungry-hive"
-                        target="_blank"
+                        href="/"
+                        target="_#"
                         className="block px-4 py-2 hover:bg-black"
                       >
                         Source Code
@@ -179,7 +175,7 @@ const Navbar = () => {
                     <li>
                       <a
                         href="https://github.com/srajankumar"
-                        target="_blank"
+                        target="#"
                         className="block px-4 py-2 hover:bg-black"
                       >
                         @srajankumar
@@ -188,7 +184,7 @@ const Navbar = () => {
                     <li>
                       <a
                         href="https://github.com/TejasNayak42"
-                        target="_blank"
+                        target="#"
                         className="block px-4 py-2 hover:bg-black"
                       >
                         @TejasNayak42

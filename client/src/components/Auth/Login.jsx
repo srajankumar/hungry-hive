@@ -18,10 +18,8 @@ export default auth;
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  const [_, setCookies] = useCookies(["access_token"]);
-
-  const navigate = useNavigate();
+  const [, setCookies] = useCookies(["access_token"]);
+  const Navigate = useNavigate();
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -30,15 +28,11 @@ const Login = () => {
         username,
         password,
       });
-
       setCookies("access_token", response.data.token);
       window.localStorage.setItem("userID", response.data.userID);
-      // save the token id in localstorage
-
-      navigate("/home");
-      // navigates to home page after logging in
-    } catch (error) {
-      console.error(error);
+      Navigate("/");
+    } catch (err) {
+      console.error(err);
     }
   };
 
