@@ -1,45 +1,54 @@
 import express from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-
 import { UserModel } from "../models/Users.js";
 
-const router = express.Router();
+const router = express.Router()
 
-router.post("/register", async (req, res) => {
-  const { username, password, email } = req.body;
-  const user = await UserModel.findOne({ username });
-  // get username is there or no
-  if (user) {
-    return res.json({ message: "User already exists!" });
-  }
+router.post("/register",async (req, res)=>{
+    const {username, password}= req.body 
+    const user = await UserModel.findOne({ username })
 
-  const hashedPassword = await bcrypt.hash(password, 10); // hash the password
+    if(user){
+        return res.json({message:"User already exists!"})
+    }
 
-  const newUser = new UserModel({ username, email, password: hashedPassword });
-  await newUser.save();
+    const hashedPassword = await bcrypt.hash(password, 10)
 
-  res.json({ message: "User registered successfully" });
-});
-// req variable is used to get data from whoeved made the request for the api
-// res used to send data to whoever made the api request
+    const newUser = new UserModel({username, password: hashedPassword})
+    await newUser.save()
 
-router.post("/login", async (req, res) => {
-  const { username, password } = req.body;
+    res.json({message:"User registered successfully !"})
+})
 
-  const user = await UserModel.findOne({ username });
+router.post("/login",async (req, res)=>{
+    const {username, password}= req.body 
+    const user = await UserModel.findOne({ username })
+    if(!user){
+        return res.json({message:"User Doesnt exist"})
+    }
 
-  if (!user) {
-    return res.json({ message: "User doesent exist" });
-  }
+    const isPasswordValid = await bcrypt.compare(password, user.password)
+    if(!isPasswordValid){
+        return res.json({message:"Username or password is incorrect!"})
+    }
 
-  const isPasswordValid = await bcrypt.compare(password, user.password);
+    const token = jwt.sign({id: user._id}, "secret")
+    res.json({token, userID:user._id})
+})
 
-  if (!isPasswordValid) {
-    return res.json({ message: "Username or password is incorrect" });
-  }
-  const token = jwt.sign({ id: user._id }, "secret");
-  res.json({ token, userID: user._id });
-});
 
-export { router as userRouter };
+
+export {router as userRouter}
+export const verifyToken =(req,res,next)=>{
+    const token=req.headers.authorization
+    if(token){
+        jwt.verify(token,"secret",(err)=>{
+            if(err) return res.sendStatus(403)
+            next()
+        })
+    }
+    else {
+        res.sendStatus(401)
+    }
+}
