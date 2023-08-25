@@ -57,7 +57,7 @@ const Navbar = () => {
                     to="/auth"
                     className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded focus:text-[#ffc20d] md:hover:bg-transparent"
                   >
-                    Sign In
+                    Register
                   </Link>
                 ) : (
                   <>

@@ -3,7 +3,7 @@ import Hero from "../components/Home/Hero";
 // import Search from "../components/Home/Search";
 // import Toast from "../components/Home/Toast";
 import Cards from "../components/allRecipes";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+// import { BrowserRouter as Router, Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -36,7 +36,7 @@ function Home() {
       <div className="min-h-screen">
         <Hero />
 
-        <div className="bg-[#212121] min-h-[20rem]">
+        <div className="bg-[#212121] min-h-screen">
           <div>
             <h1 className="font-bold md:px-10 text-white text-2xl px-5">
               Meal Category

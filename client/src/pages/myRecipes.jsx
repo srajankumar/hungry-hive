@@ -1,5 +1,5 @@
 import React from "react";
-import Tilt from "react-parallax-tilt";
+// import Tilt from "react-parallax-tilt";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useGetUserID } from "../hooks/useGetUserID";

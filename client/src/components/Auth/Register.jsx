@@ -9,6 +9,7 @@ export const Register = () => {
   );
 };
 const SignIn = () => {
+  const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,6 +17,7 @@ const SignIn = () => {
     event.preventDefault();
     try {
       await axios.post("http://localhost:3001/auth/register", {
+        email,
         username,
         password,
       });
@@ -26,17 +28,21 @@ const SignIn = () => {
   };
   return (
     <Form
+      email={email}
+      setEmail={setEmail}
       username={username}
       setUsername={setUsername}
       password={password}
       setPassword={setPassword}
-      label="Sign In"
+      label="Register"
       onSubmit={onSubmit}
     />
   );
 };
 
 const Form = ({
+  email,
+  setEmail,
   username,
   setUsername,
   password,
@@ -58,6 +64,23 @@ const Form = ({
                 action="#"
                 onSubmit={onSubmit}
               >
+                <div>
+                  <label
+                    for="email"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    className="sm:text-sm rounded-lg focus:ring-[#ffc20d] text-white border-0 focus:border-primary-600 block w-full p-2.5 bg-[#1c1c1c]"
+                    required
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                  />
+                </div>
                 <div>
                   <label
                     for="username"
