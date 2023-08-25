@@ -33,22 +33,15 @@ function Home() {
         </div>
       </div> */}
 
-      <div>
+      <div className="min-h-screen">
         <Hero />
-        <div className="w-full h-52 ">
-          <span className="md:text-7xl text-4xl bg-[#0000006a] flex justify-center items-center w-full h-full main-heading text-green-400 drop-shadow-lg">
-            Vegetarian
-          </span>
-        </div>
-        <div className="bg-white">
-          <Cards />
-        </div>
-        <div className="w-full h-52 ">
-          <span className="md:text-7xl text-4xl bg-[#0000006a] flex justify-center items-center w-full h-full main-heading text-red-400 drop-shadow-lg">
-            Non-Vegetarian
-          </span>
-        </div>
-        <div className="bg-white">
+
+        <div className="bg-[#212121] min-h-[20rem]">
+          <div>
+            <h1 className="font-bold md:px-10 text-white text-2xl px-5">
+              Meal Category
+            </h1>
+          </div>
           <Cards />
         </div>
       </div>

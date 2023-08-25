@@ -1,5 +1,4 @@
 import React from "react";
-import Tilt from "react-parallax-tilt";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useGetUserID } from "../hooks/useGetUserID";
@@ -49,94 +48,86 @@ const AllRecipes = () => {
       console.error(err);
     }
   };
-
   const isRecipeSaved = (id) => savedRecipes.includes(id);
 
   return (
-    <div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {recipe.map((recipe) => (
         <section className="body-font text-gray-400" key={recipe._id}>
-          <div className="container md:px-10 px-5 py-10 mx-auto">
+          <div className="container flex justify-center md:px-10 px-5 py-10 ">
             <div className="flex flex-wrap -m-4">
-              <div className="p-4 md:w-1/3">
-                <Tilt>
-                  <div className="h-full hover:shadow-2xl bg-black bg-opacity-70 hover:shadow-zinc-700 shadow-white transition duration-300 shadow-sm border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-                    <img
-                      className="lg:h-48 md:h-36 w-full object-cover object-center"
-                      src={recipe.imageUrl}
-                      alt={recipe.name}
-                    />
-                    <div className="p-6">
-                      <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                        <button
-                          onClick={() => saveRecipe(recipe._id)}
-                          disabled={isRecipeSaved(recipe._id)}
-                        >
-                          {isRecipeSaved(recipe._id) ? "Saved" : "Save"}
-                        </button>
-                      </h2>
-
-                      <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                        {recipe.cookingTime} (minutes)
-                      </h2>
-                      <h1 className="title-font text-lg font-medium text-gray-100 mb-3">
+              <div className="p-4">
+                <div className="h-full bg-[#272727] bg-opacity-70 rounded-lg overflow-hidden">
+                  <img
+                    className="lg:h-48 h-36 w-full object-cover object-center"
+                    src={recipe.imageUrl}
+                    alt={recipe.name}
+                  />
+                  <div className="p-6">
+                    <h2 className="justify-between items-center mb-3 tracking-widest flex text-xs title-font font-medium text-gray-400">
+                      <h1 className="title-font text-xl font-bold tracking-wider text-gray-100">
                         {recipe.name}
                       </h1>
-                      <p className="leading-relaxed mb-3">
-                        {recipe.instructions}
-                      </p>
-                      <div className="flex items-center flex-wrap ">
-                        <a
-                          href="/"
-                          className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
+                      <button
+                        onClick={() => saveRecipe(recipe._id)}
+                        disabled={isRecipeSaved(recipe._id)}
+                      >
+                        {isRecipeSaved(recipe._id) ? (
+                          <div className="text-red-500">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="30"
+                              height="30"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M8.4 5.25c-2.78 0-5.15 2.08-5.15 4.78c0 1.863.872 3.431 2.028 4.73c1.153 1.295 2.64 2.382 3.983 3.292l2.319 1.57a.75.75 0 0 0 .84 0l2.319-1.57c1.344-.91 2.83-1.997 3.982-3.292c1.157-1.299 2.029-2.867 2.029-4.73c0-2.7-2.37-4.78-5.15-4.78c-1.434 0-2.695.672-3.6 1.542c-.905-.87-2.167-1.542-3.6-1.542Z"
+                              />
+                            </svg>
+                          </div>
+                        ) : (
+                          <div className="hover:text-red-500 transition duration-300">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="30"
+                              height="30"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M8.4 5.25c-2.78 0-5.15 2.08-5.15 4.78c0 1.863.872 3.431 2.028 4.73c1.153 1.295 2.64 2.382 3.983 3.292l2.319 1.57a.75.75 0 0 0 .84 0l2.319-1.57c1.344-.91 2.83-1.997 3.982-3.292c1.157-1.299 2.029-2.867 2.029-4.73c0-2.7-2.37-4.78-5.15-4.78c-1.434 0-2.695.672-3.6 1.542c-.905-.87-2.167-1.542-3.6-1.542Z"
+                              />
+                            </svg>
+                          </div>
+                        )}
+                      </button>
+                    </h2>
+                    {/* <h1 className="title-font text-xl font-bold tracking-wider text-gray-100 mb-3">
+                      {recipe.name}
+                    </h1> */}
+                    <p className="leading-relaxed mb-3">
+                      {recipe.instructions}
+                    </p>
+                    <div className="flex items-center flex-wrap ">
+                      <div className="inline-flex items-center md:mb-2 lg:mb-0">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="17"
+                          height="17"
+                          className="mr-2 text-[#ffc20d]"
+                          viewBox="0 0 20 20"
                         >
-                          View Recipe
-                          <svg
-                            className="w-4 h-4 ml-2"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            fill="none"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <path d="M5 12h14"></path>
-                            <path d="M12 5l7 7-7 7"></path>
-                          </svg>
-                        </a>
-                        <span className="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
-                          <svg
-                            className="w-4 h-4 mr-1"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            fill="none"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                            <circle cx="12" cy="12" r="3"></circle>
-                          </svg>
-                          1.2K
-                        </span>
-                        <span className="text-gray-400 inline-flex items-center leading-none text-sm">
-                          <svg
-                            className="w-4 h-4 mr-1"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            fill="none"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                          </svg>
-                          6
-                        </span>
+                          <path
+                            fill="currentColor"
+                            d="M10 20a10 10 0 1 1 0-20a10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16a8 8 0 0 0 0 16zm-1-7.59V4h2v5.59l3.95 3.95l-1.41 1.41L9 10.41z"
+                          />
+                        </svg>
+                        {recipe.cookingTime} min
                       </div>
                     </div>
                   </div>
-                </Tilt>
+                </div>
               </div>
             </div>
           </div>

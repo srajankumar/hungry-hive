@@ -14,31 +14,10 @@ const Navbar = () => {
   };
   return (
     <div>
-      <nav className="fixed z-50 w-full text-green-100 backdrop-blur-sm shadow-md">
-        <div className="flex flex-wrap items-center justify-between mx-auto p-4">
+      <nav className="fixed z-50 w-full md:px-10 px-5 text-white backdrop-blur-md shadow-md">
+        <div className="flex flex-wrap items-center justify-between mx-auto py-4">
           <Link to="/" className="flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="35"
-              height="35"
-              className="mr-3"
-              viewBox="0 0 24 24"
-            >
-              <path
-                fill="currentColor"
-                d="M1 21.98c0 .56.45 1.01 1.01 1.01H15c.56 0 1.01-.45 1.01-1.01V21H1v.98z"
-              />
-              <path
-                fill="currentColor"
-                d="M8.5 10.99c-1.42 0-3.77.46-4.88 2.01h9.77c-1.12-1.55-3.47-2.01-4.89-2.01z"
-                opacity=".3"
-              />
-              <path
-                fill="currentColor"
-                d="M8.5 8.99C4.75 8.99 1 11 1 15h15c0-4-3.75-6.01-7.5-6.01zM3.62 13c1.11-1.55 3.47-2.01 4.88-2.01s3.77.46 4.88 2.01H3.62zM1 17h15v2H1zM18 5V1h-2v4h-5l.23 2h9.56l-1.4 14H18v2h1.72c.84 0 1.53-.65 1.63-1.47L23 5h-5z"
-              />
-            </svg>
-            <span className="self-center text-transparent bg-clip-text bg-gradient-to-r from-purple-200 to-orange-300 text-2xl font-bold whitespace-nowrap ">
+            <span className="self-center text-[#ffc20d] text-2xl font-bold whitespace-nowrap ">
               Hungry Hive
             </span>
           </Link>
@@ -70,57 +49,60 @@ const Navbar = () => {
             className="hidden w-full md:block md:w-auto"
             id="navbar-dropdown"
           >
-            <ul className="flex font-medium p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0  border-gray-700">
-              
+            <ul className="flex font-bold tracking-wider p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0  border-gray-700">
+              <li></li>
               <li>
-                <Link
-                  to="add-recipes"
-                  className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
-                >
-                  Add Recipes
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/auth"
-                  className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
-                >
-                  Sign In
-                </Link>
+                {!cookies.access_token ? (
+                  <Link
+                    to="/auth"
+                    className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded focus:text-[#ffc20d] md:hover:bg-transparent"
+                  >
+                    Sign In
+                  </Link>
+                ) : (
+                  <>
+                    {" "}
+                    <Link
+                      to="add-recipes"
+                      className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 rounded focus:text-[#ffc20d] md:hover:bg-transparent"
+                    >
+                      Add Recipes
+                    </Link>
+                  </>
+                )}
               </li>
               <li>
                 {!cookies.access_token ? (
                   <Link
                     to="/login"
-                    className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
+                    className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded focus:text-[#ffc20d] md:hover:bg-transparent"
                   >
                     Login
                   </Link>
                 ) : (
                   <>
-                  <ul>
-                  <li>
-                <Link
-                  to="/my-recipes"
-                  className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
-                >
-                  My Recipes
-                </Link>
-              </li>
-                  </ul>
-                 
-              <button onClick={logout}>Log Out</button>
+                    <ul className="flex">
+                      <li>
+                        <Link
+                          to="/my-recipes"
+                          className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pr-4 rounded focus:text-[#ffc20d] md:hover:bg-transparent"
+                        >
+                          My Recipes
+                        </Link>
+                      </li>
+                      <li>
+                        <button
+                          className="hover:underline hover:text-red-400 hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded md:hover:bg-transparent"
+                          onClick={logout}
+                        >
+                          Log Out
+                        </button>
+                      </li>
+                    </ul>
                   </>
-                  
                 )}
-                {/* {!cookies.access_token ?(<Link
-                  href="/login"
-                  className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded hover:text-gray-300 md:hover:bg-transparent"
-                >
-                  Login
-                </Link>):<button onClick={logout} >Log Out</button>} */}
               </li>
-              <li>
+              {/* <li>
                 <button
                   id="dropdownNavbarLink"
                   data-dropdown-toggle="dropdownNavbar"
@@ -194,7 +176,7 @@ const Navbar = () => {
                     </li>
                   </ul>
                 </div>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
