@@ -93,7 +93,7 @@ const Form = ({
         <div className="flex flex-col items-center justify-center px-6 py-6 mx-auto md:h-screen lg:py-0">
           <div className="w-full  rounded-lg shadow-md bg-[#272727] md:mt-0 sm:max-w-md xl:p-0 ">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+              <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl text-white">
                 {label}
               </h1>
               <form
@@ -104,7 +104,7 @@ const Form = ({
                 <div>
                   <label
                     for="username"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    className="block mb-2 text-sm font-medium text-white"
                   >
                     Username
                   </label>
@@ -121,7 +121,7 @@ const Form = ({
                 <div>
                   <label
                     for="password"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    className="block mb-2 text-sm font-medium text-white"
                   >
                     Password
                   </label>
