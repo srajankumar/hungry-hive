@@ -3,6 +3,34 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useGetUserID } from "../hooks/useGetUserID";
+
+import jsPDF from "jspdf";
+
+const generatePDF = (recipe) => {
+  const pdf = new jsPDF();
+  const margin = 20;
+  const fontSize = 12;
+  let textY = 20;
+
+  pdf.setFontSize(16);
+  pdf.text(margin, textY, recipe.name);
+
+  pdf.setFontSize(fontSize);
+  const lines = pdf.splitTextToSize(
+    recipe.instructions,
+    pdf.internal.pageSize.width - 2 * margin
+  );
+  lines.forEach((line) => {
+    pdf.text(margin, (textY += fontSize), line);
+  });
+
+  textY += 10; // Add some space between paragraphs
+
+  pdf.text(margin, textY, `Cooking Time: ${recipe.cookingTime} min`);
+
+  pdf.save(`${recipe.name}.pdf`);
+};
+
 const MyRecipes = () => {
   const userID = useGetUserID();
   const [savedRecipes, setSavedRecipes] = useState([]);
@@ -50,7 +78,7 @@ const MyRecipes = () => {
                       <p className="leading-relaxed mb-3">
                         {recipe.instructions}
                       </p>
-                      <div className="flex items-center flex-wrap ">
+                      <div className="flex items-center justify-between flex-wrap ">
                         <div className="inline-flex items-center md:mb-2 lg:mb-0">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -66,6 +94,30 @@ const MyRecipes = () => {
                           </svg>
                           {recipe.cookingTime} min
                         </div>
+                        <button
+                          onClick={() => generatePDF(recipe)}
+                          className="hover:text-white text-[#ffc20d] transition duration-300"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="25"
+                            height="25"
+                            viewBox="0 0 16 16"
+                          >
+                            <g
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="1.5"
+                            >
+                              <circle cx="4" cy="8" r="2.25" />
+                              <circle cx="12" cy="12" r="2.25" />
+                              <circle cx="12" cy="4" r="2.25" />
+                              <path d="m6 9l4 2M6 7l4-2" />
+                            </g>
+                          </svg>
+                        </button>
                       </div>
                     </div>
                   </div>
