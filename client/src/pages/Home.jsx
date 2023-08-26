@@ -35,13 +35,7 @@ function Home() {
 
       <div className="min-h-screen">
         <Hero />
-
         <div className="bg-[#212121] min-h-screen">
-          <div>
-            <h1 className="font-bold md:px-10 text-white text-2xl px-5">
-              Meal Category
-            </h1>
-          </div>
           <Cards />
         </div>
       </div>
