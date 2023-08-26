@@ -80,8 +80,13 @@ const AllRecipes = () => {
 
   return (
     <div>
-      <div>
+      <div className="py-10 mb-10">
         <Searchbar />
+      </div>
+      <div>
+        <h1 className="font-bold md:px-10 text-white text-2xl px-5">
+          Meal Category
+        </h1>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {recipe.map((recipe) => (
