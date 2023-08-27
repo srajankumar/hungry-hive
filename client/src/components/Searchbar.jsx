@@ -45,7 +45,7 @@ const Searchbar = () => {
           <div className="flex justify-center">
             <input
               type="text"
-              className="form-control sm:text-sm rounded-lg focus:ring-[#ffc20d] text-white border-0 focus:border-primary-600 block md:w-1/2 w-full mx-5 px-5 py-3 bg-[#1c1c1c]"
+              className="form-control mb-10 sm:text-sm rounded-lg focus:ring-[#ffc20d] text-white border-0 focus:border-primary-600 block md:w-1/2 w-full mx-5 px-5 py-3 bg-[#1c1c1c]"
               placeholder="Search for your favourite recipes"
               value={key}
               onChange={(e) => setKey(e.target.value)}

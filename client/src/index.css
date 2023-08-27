@@ -16,13 +16,6 @@
   border-radius: 5px;
 }
 
-body {
-  background-image: url("../public/assets/img.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
 * {
   font-family: "Poppins", sans-serif;
 }

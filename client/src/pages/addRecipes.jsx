@@ -38,7 +38,7 @@ const AddRecipes = () => {
         headers: { authorization: cookies.access_token },
       });
       alert("Recipe Added!");
-      navigate("/");
+      navigate("/home");
     } catch (err) {
       console.error(err);
     }

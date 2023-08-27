@@ -1,5 +1,4 @@
 import React from "react";
-// import Tilt from "react-parallax-tilt";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useGetUserID } from "../hooks/useGetUserID";
@@ -72,9 +71,6 @@ const MyRecipes = () => {
                           {recipe.name}
                         </h1>
                       </h2>
-                      {/* <h1 className="title-font text-xl font-bold tracking-wider text-gray-100 mb-3">
-                    {recipe.name}
-                  </h1> */}
                       <p className="leading-relaxed mb-3">
                         {recipe.instructions}
                       </p>

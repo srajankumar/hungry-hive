@@ -31,7 +31,7 @@ const LogIn = () => {
       setCookies("access_token", response.data.token);
       window.localStorage.setItem("userID", response.data.userID);
       // setUserNotFound(false); // Reset user not found state
-      Navigate("/");
+      Navigate("/home");
       // } else {
       //   setUserNotFound(true); // Set user not found state to true
       // }
@@ -144,7 +144,7 @@ const Form = ({
                 <div class="text-sm text-white mt-3">
                   Do not have an account?{" "}
                   <Link
-                    to="/auth"
+                    to="/register"
                     className="text-[#ffc20d] hover:underline hover:underline-offset-4"
                   >
                     Register
