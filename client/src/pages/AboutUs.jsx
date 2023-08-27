@@ -1,6 +1,6 @@
 
 import React from "react";
-import Navbar from "../components/Navbar";
+
 
 
 
@@ -8,9 +8,9 @@ import Navbar from "../components/Navbar";
 const AboutUs = () => {
   return (
     <div className="about-us-page">
-      <Navbar />
+      
       <div className="min-h-screen pt-24 px-5 sm:px-10 bg-gray-900 text-white">
-        <h1 className="sm:py-5 main-heading text-lg bg-yellow-500 sm:text-2xl">
+        <h1 className="sm:py-5 main-heading text-lg text-[#ffc20d] sm:text-2xl">
           Welcome to Hungry Hive - Where Culinary Creativity Knows No Bounds!
         </h1>
         <p className="py-3 text-normal">
@@ -19,7 +19,7 @@ const AboutUs = () => {
           share our love for all things delicious and delightful.
         </p>
         <div className="py-3 text-normal">
-          <p className="main-heading text-orange-500">Our Philosophy</p>
+          <p className="main-heading text-[#ffc20d]">Our Philosophy</p>
           <p>
             Food is an incredible journey, and every recipe is a story waiting
             to be told. Whether you're a novice cook taking your first steps in
@@ -28,7 +28,7 @@ const AboutUs = () => {
           </p>
         </div>
         <div className="py-3 text-normal">
-          <p className="main-heading text-orange-500">Our Mission</p>{" "}
+          <p className="main-heading text-[#ffc20d]">Our Mission</p>{" "}
           <p>
             We believe that cooking is an art form that allows you to express
             yourself, connect with others, and embark on a never-ending
@@ -36,7 +36,7 @@ const AboutUs = () => {
           </p>
         </div>
         <div className="py-3 text-normal">
-          <p className="main-heading text-orange-500">What We Offer</p>
+          <p className="main-heading text-[#ffc20d]">What We Offer</p>
           <p>
             Exquisite Recipes: Our curated collection of recipes spans a wide
             range of cuisines and skill levels. From quick and easy weeknight
@@ -45,7 +45,7 @@ const AboutUs = () => {
           </p>
         </div>
         <div className="py-3 text-normal">
-          <p className="main-heading text-orange-500">Cooking Techniques </p>
+          <p className="main-heading text-[#ffc20d]">Cooking Techniques </p>
           <p>
             Elevate your cooking skills with our detailed cooking guides and
             tutorials. Learn the secrets behind fundamental techniques and
@@ -53,7 +53,7 @@ const AboutUs = () => {
           </p>
         </div>
         <div className="py-3 text-normal">
-          <p className="main-heading text-orange-500">Community Collaboration </p>
+          <p className="main-heading text-[#ffc20d]">Community Collaboration </p>
           <p>
             Join a community of fellow food enthusiasts who share your passion.
             Share your own recipes, tips, and culinary creations, and engage in
@@ -61,7 +61,7 @@ const AboutUs = () => {
           </p>
         </div>
         <div className="py-3 text-normal">
-          <p className="main-heading text-orange-500">Why Choose Hungry Hive</p>
+          <p className="main-heading text-[#ffc20d]">Why Choose Hungry Hive</p>
           <p>
             What sets Hungry Hive apart is our dedication to authenticity,
             innovation, and inclusivity. Our recipes are tested and crafted with
