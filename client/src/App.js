@@ -6,6 +6,9 @@ import MyRecipes from "./pages/myRecipes";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import { Login } from "./components/Auth/Login";
+import Search from "./pages/Search";
+import { Switch } from "react-router-dom";
+import RecipeDetail from "./pages/RecipeDetail";
 
 import { Register } from "./components/Auth/Register";
 
@@ -20,6 +23,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/my-recipes" element={<MyRecipes />} />
           <Route path="/add-recipes" element={<AddRecipes />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/recipe/:recipeName" component={<RecipeDetail />} />
         </Routes>
         <Footer />
       </Router>
