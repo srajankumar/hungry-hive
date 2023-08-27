@@ -101,7 +101,25 @@ const Navbar = () => {
                     </ul>
                   </>
                 )}
+               </li>
+              
+              <li>
+                <Link
+                  to="/about-us"
+                  className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded focus:text-[#ffc20d] md:hover:bg-transparent"
+                >
+                  About Us
+                </Link>
               </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  );
+};
+
+
               {/* <li>
                 <button
                   id="dropdownNavbarLink"
@@ -177,12 +195,6 @@ const Navbar = () => {
                   </ul>
                 </div>
               </li> */}
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </div>
-  );
-};
+            
 
 export default Navbar;
