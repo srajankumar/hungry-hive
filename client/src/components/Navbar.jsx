@@ -49,13 +49,20 @@ const Navbar = () => {
             className="hidden w-full md:block md:w-auto"
             id="navbar-dropdown"
           >
-            <ul className="flex font-bold tracking-wider p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0  border-gray-700">
-              <li></li>
+            <ul className="flex font-bold tracking-wider p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:mt-0 md:border-0  border-gray-700">
+              <li>
+                <Link
+                  to="/about-us"
+                  className="md:pl-10 hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 rounded focus:text-[#ffc20d] md:hover:bg-transparent"
+                >
+                  About Us
+                </Link>
+              </li>
               <li>
                 {!cookies.access_token ? (
                   <Link
                     to="/auth"
-                    className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded focus:text-[#ffc20d] md:hover:bg-transparent"
+                    className="md:pl-10 hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 rounded focus:text-[#ffc20d] md:hover:bg-transparent"
                   >
                     Register
                   </Link>
@@ -64,7 +71,7 @@ const Navbar = () => {
                     {" "}
                     <Link
                       to="add-recipes"
-                      className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 rounded focus:text-[#ffc20d] md:hover:bg-transparent"
+                      className="md:pl-10 hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 rounded focus:text-[#ffc20d] md:hover:bg-transparent"
                     >
                       Add Recipes
                     </Link>
@@ -75,7 +82,7 @@ const Navbar = () => {
                 {!cookies.access_token ? (
                   <Link
                     to="/login"
-                    className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded focus:text-[#ffc20d] md:hover:bg-transparent"
+                    className="md:pl-10 hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 rounded focus:text-[#ffc20d] md:hover:bg-transparent"
                   >
                     Login
                   </Link>
@@ -85,14 +92,14 @@ const Navbar = () => {
                       <li>
                         <Link
                           to="/my-recipes"
-                          className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pr-4 rounded focus:text-[#ffc20d] md:hover:bg-transparent"
+                          className="md:pl-10 hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 rounded focus:text-[#ffc20d] md:hover:bg-transparent"
                         >
                           My Recipes
                         </Link>
                       </li>
                       <li>
                         <button
-                          className="hover:underline hover:text-red-400 hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded md:hover:bg-transparent"
+                          className="md:pl-10 hover:underline hover:text-red-400 hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 rounded md:hover:bg-transparent"
                           onClick={logout}
                         >
                           Log Out
@@ -101,15 +108,6 @@ const Navbar = () => {
                     </ul>
                   </>
                 )}
-               </li>
-              
-              <li>
-                <Link
-                  to="/about-us"
-                  className="hover:underline hover:underline-offset-4 focus:underline focus:underline-offset-8 block py-2 pl-3 pr-4 rounded focus:text-[#ffc20d] md:hover:bg-transparent"
-                >
-                  About Us
-                </Link>
               </li>
             </ul>
           </div>
@@ -119,8 +117,8 @@ const Navbar = () => {
   );
 };
 
-
-              {/* <li>
+{
+  /* <li>
                 <button
                   id="dropdownNavbarLink"
                   data-dropdown-toggle="dropdownNavbar"
@@ -194,7 +192,7 @@ const Navbar = () => {
                     </li>
                   </ul>
                 </div>
-              </li> */}
-            
+              </li> */
+}
 
 export default Navbar;
