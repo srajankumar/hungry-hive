@@ -34,9 +34,13 @@ const AddRecipes = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("http://localhost:3001/recipes", recipe, {
-        headers: { authorization: cookies.access_token },
-      });
+      await axios.post(
+        "https://hungry-hive-server.vercel.app/recipes",
+        recipe,
+        {
+          headers: { authorization: cookies.access_token },
+        }
+      );
       alert("Recipe Added!");
       navigate("/home");
     } catch (err) {

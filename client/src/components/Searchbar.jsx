@@ -12,9 +12,12 @@ const Searchbar = () => {
           setSearchResult([]);
           return;
         }
-        const res = await axios.get("http://localhost:3001/recipes", {
-          params: { key: key, limit: 5 },
-        });
+        const res = await axios.get(
+          "https://hungry-hive-server.vercel.app/recipes",
+          {
+            params: { key: key, limit: 5 },
+          }
+        );
 
         // Filter search results based on first letters of recipe names
         const filteredResults = res.data.filter((recipe) =>

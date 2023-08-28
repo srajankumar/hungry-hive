@@ -67,7 +67,7 @@ const AllRecipes = () => {
   const saveRecipe = async (recipeID) => {
     try {
       const response = await axios.put(
-        "http://localhost:3001/recipes",
+        "https://hungry-hive-server.vercel.app/recipes",
         { recipeID, userID },
         { headers: { authorization: cookies.access_token } }
       );
