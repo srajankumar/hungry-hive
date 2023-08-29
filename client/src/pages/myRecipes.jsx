@@ -37,7 +37,7 @@ const MyRecipes = () => {
     const fetchSavedRecipe = async () => {
       try {
         const response = await axios.get(
-          `https://hungry-hive-server.vercel.app/recipes/myRecipes/${userID}`
+          `http://localhost:3001/recipes/myRecipes/${userID}`
         );
         setSavedRecipes(response.data.savedRecipes);
       } catch (err) {

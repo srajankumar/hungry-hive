@@ -41,9 +41,7 @@ const AllRecipes = () => {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const response = await axios.get(
-          "https://hungry-hive-server.vercel.app/recipes"
-        );
+        const response = await axios.get("http://localhost:3001/recipes");
         setRecipes(response.data);
         console.log(response.data);
       } catch (err) {
@@ -54,7 +52,7 @@ const AllRecipes = () => {
     const fetchSavedRecipe = async () => {
       try {
         const response = await axios.get(
-          `https://hungry-hive-server.vercel.app/recipesrecipes/addRecipes/ids/${userID}`
+          `http://localhost:3001/recipesrecipes/addRecipes/ids/${userID}`
         );
         setSavedRecipes(response.data.savedRecipes);
       } catch (err) {
@@ -69,7 +67,7 @@ const AllRecipes = () => {
   const saveRecipe = async (recipeID) => {
     try {
       const response = await axios.put(
-        "https://hungry-hive-server.vercel.app/recipes",
+        "http://localhost:3001/recipes",
         { recipeID, userID },
         { headers: { authorization: cookies.access_token } }
       );

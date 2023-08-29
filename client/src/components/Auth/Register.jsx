@@ -25,7 +25,7 @@ const SignIn = () => {
       return;
     }
     try {
-      await axios.post("https://hungry-hive-server.vercel.app/auth/register", {
+      await axios.post("http://localhost:3001/auth/register", {
         email,
         username,
         password,
