@@ -1,10 +1,10 @@
 import React from "react";
 
-import img1 from "../../assets/carousel/one.jpg";
-import img2 from "../../assets/carousel/two.jpg";
-import img3 from "../../assets/carousel/three.jpg";
-import img4 from "../../assets/carousel/four.jpg";
-import img5 from "../../assets/carousel/five.jpg";
+// import img1 from "../../assets/carousel/one.jpg";
+// import img2 from "../../assets/carousel/two.jpg";
+// import img3 from "../../assets/carousel/three.jpg";
+// import img4 from "../../assets/carousel/four.jpg";
+// import img5 from "../../assets/carousel/five.jpg";
 
 const Hero = () => {
   return (
@@ -17,35 +17,35 @@ const Hero = () => {
         <div className="relative rounded-3xl h-56 overflow-hidden md:h-[50vh]">
           <div className="hidden duration-700 ease-in-out" data-carousel-item>
             <img
-              src={img1}
+              src="/assets/carousel/one.jpg"
               className="absolute block w-full h-full object-cover  -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
               alt="..."
             />
           </div>
           <div className="hidden duration-700 ease-in-out" data-carousel-item>
             <img
-              src={img2}
+              src="/assets/carousel/two.jpg"
               className="absolute block w-full h-full object-cover  -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
               alt="..."
             />
           </div>
           <div className="hidden duration-700 ease-in-out" data-carousel-item>
             <img
-              src={img3}
+              src="/assets/carousel/three.jpg"
               className="absolute block w-full h-full object-cover  -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
               alt="..."
             />
           </div>
           <div className="hidden duration-700 ease-in-out" data-carousel-item>
             <img
-              src={img4}
+              src="/assets/carousel/four.jpg"
               className="absolute block w-full h-full object-cover  -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
               alt="..."
             />
           </div>
           <div className="hidden duration-700 ease-in-out" data-carousel-item>
             <img
-              src={img5}
+              src="/assets/carousel/five.jpg"
               className="absolute block w-full h-full object-cover  -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
               alt="..."
             />
