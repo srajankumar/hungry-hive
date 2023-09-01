@@ -28,6 +28,16 @@ const generatePDF = (recipe) => {
 
   pdf.text(margin, textY, `Cooking Time: ${recipe.cookingTime} min`);
 
+  textY += 15; // Add space before the Ingredients section
+
+  pdf.setFontSize(14); // Set font size for Ingredients section
+  pdf.text(margin, textY, "Ingredients:");
+  pdf.setFontSize(fontSize);
+  // Loop through the ingredients and add them to the PDF
+  recipe.ingredients.forEach((ingredient) => {
+    pdf.text(margin, (textY += fontSize), `- ${ingredient}`);
+  });
+
   pdf.save(`${recipe.name}.pdf`);
 };
 
@@ -142,6 +152,16 @@ const AllRecipes = () => {
                       <p className="leading-relaxed mb-3">
                         {recipe.instructions}
                       </p>
+                      <div className="my-5">
+                        <h3 className="text-gray-100 mb-2">Ingredients</h3>
+                        <ul className="list-disc list-inside">
+                          {recipe.ingredients.map((ingredient, index) => (
+                            <li key={index} className="text-gray-400">
+                              {ingredient}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                       <div className="flex items-center justify-between flex-wrap ">
                         <div className="inline-flex items-center md:mb-2 lg:mb-0">
                           <svg
@@ -184,7 +204,7 @@ const AllRecipes = () => {
                         </button>
                       </div>
                     </div>
-                  </div>
+                  </div>{" "}
                 </div>
               </div>
             </div>

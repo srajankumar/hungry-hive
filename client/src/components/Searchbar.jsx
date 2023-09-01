@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import jsPDF from "jspdf";
 
 const Searchbar = () => {
   const [searchResult, setSearchResult] = useState([]);
@@ -36,6 +37,41 @@ const Searchbar = () => {
     if (e.key === "Backspace" && !key.trim()) {
       setSearchResult([]);
     }
+  };
+
+  const generatePDF = (recipe) => {
+    const pdf = new jsPDF();
+    const margin = 20;
+    const fontSize = 12;
+    let textY = 20;
+
+    pdf.setFontSize(16);
+    pdf.text(margin, textY, recipe.name);
+
+    pdf.setFontSize(fontSize);
+    const lines = pdf.splitTextToSize(
+      recipe.instructions,
+      pdf.internal.pageSize.width - 2 * margin
+    );
+    lines.forEach((line) => {
+      pdf.text(margin, (textY += fontSize), line);
+    });
+
+    textY += 10; // Add some space between paragraphs
+
+    pdf.text(margin, textY, `Cooking Time: ${recipe.cookingTime} min`);
+
+    textY += 15; // Add space before the Ingredients section
+
+    pdf.setFontSize(14); // Set font size for Ingredients section
+    pdf.text(margin, textY, "Ingredients:");
+    pdf.setFontSize(fontSize);
+    // Loop through the ingredients and add them to the PDF
+    recipe.ingredients.forEach((ingredient) => {
+      pdf.text(margin, (textY += fontSize), `- ${ingredient}`);
+    });
+
+    pdf.save(`${recipe.name}.pdf`);
   };
 
   return (
@@ -78,6 +114,20 @@ const Searchbar = () => {
                               <p className="leading-relaxed mb-3">
                                 {recipe.instructions}
                               </p>
+                              <div className="my-5">
+                                <h3 className="text-gray-100 mb-2">
+                                  Ingredients
+                                </h3>
+                                <ul className="list-disc list-inside">
+                                  {recipe.ingredients.map(
+                                    (ingredient, index) => (
+                                      <li key={index} className="text-gray-400">
+                                        {ingredient}
+                                      </li>
+                                    )
+                                  )}
+                                </ul>
+                              </div>
                               <div className="flex items-center justify-between flex-wrap ">
                                 <div className="inline-flex items-center md:mb-2 lg:mb-0">
                                   <svg
@@ -94,6 +144,30 @@ const Searchbar = () => {
                                   </svg>
                                   {recipe.cookingTime} min
                                 </div>
+                                <button
+                                  onClick={() => generatePDF(recipe)}
+                                  className="hover:text-white text-[#ffc20d] transition duration-300"
+                                >
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="25"
+                                    height="25"
+                                    viewBox="0 0 16 16"
+                                  >
+                                    <g
+                                      fill="none"
+                                      stroke="currentColor"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="1.5"
+                                    >
+                                      <circle cx="4" cy="8" r="2.25" />
+                                      <circle cx="12" cy="12" r="2.25" />
+                                      <circle cx="12" cy="4" r="2.25" />
+                                      <path d="m6 9l4 2M6 7l4-2" />
+                                    </g>
+                                  </svg>
+                                </button>
                               </div>
                             </div>
                           </div>
