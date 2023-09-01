@@ -43,4 +43,8 @@ db.once("open", () => {
 
 // connect to db
 
-app.listen(3001, () => console.log("Server started and running at 3001"));
+const port = process.env.PORT || 3001;
+
+app.listen(port, () =>
+  console.log(`Server running on ${port}, http://localhost:${port}`)
+);
