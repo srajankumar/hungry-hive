@@ -1,10 +1,5 @@
-// import Background from "../components/Background";
-import Hero from "../components/Home/Hero";
-// import Search from "../components/Home/Search";
-// import Toast from "../components/Home/Toast";
-import Cards from "../components/allRecipes";
 import { BrowserRouter as Router, Link } from "react-router-dom";
-import Homee from "../pages/Home";
+
 import vid from "../assets/hero.mp4";
 import img from "../assets/hero0.jpg";
 
