@@ -1,11 +1,5 @@
 import React from "react";
 
-// import img1 from "../../assets/carousel/one.jpg";
-// import img2 from "../../assets/carousel/two.jpg";
-// import img3 from "../../assets/carousel/three.jpg";
-// import img4 from "../../assets/carousel/four.jpg";
-// import img5 from "../../assets/carousel/five.jpg";
-
 const Hero = () => {
   return (
     <div className="w-full pt-20 md:px-10 px-5 text-white bg-[#212121] z-40 md:top-0 py-16">
