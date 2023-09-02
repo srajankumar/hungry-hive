@@ -41,3 +41,23 @@ video {
   top: 0;
   left: 0;
 }
+
+/* Modal container */
+.ReactModal__Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Adjust the z-index as needed */
+}
+
+/* Scrollable modal content */
+.ReactModal__Content {
+  overflow-y: auto; /* Enable vertical scrolling when content overflows */
+  color: white; /* Text color for modal content */
+  border-radius: 10px; /* Rounded corners for the modal */
+}
