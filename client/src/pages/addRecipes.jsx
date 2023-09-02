@@ -16,6 +16,7 @@ const AddRecipes = () => {
     cookingTime: 0,
     userOwner: userID,
   });
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setRecipe({ ...recipe, [name]: value });
@@ -31,6 +32,7 @@ const AddRecipes = () => {
   const addIngredients = () => {
     setRecipe({ ...recipe, ingredients: [...recipe.ingredients, ""] });
   };
+
   const onSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -46,7 +48,7 @@ const AddRecipes = () => {
   return (
     <div className="bg-[#212121] min-h-screen pt-20 md:pt-10">
       <section>
-        <div className="flex flex-col items-center pt-14 px-6 py-6 mx-auto md:h-screen">
+        <div className="flex flex-col items-center pt-14 px-6 py-6 mx-auto md:min-h-screen">
           <div className="w-full rounded-lg shadow-md bg-[#272727] md:mt-0 sm:max-w-md xl:p-0 ">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl text-white">

@@ -324,8 +324,8 @@ const AllRecipes = () => {
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            width="27"
-                            height="27"
+                            width="30"
+                            height="30"
                             viewBox="0 0 16 16"
                             className="hover:text-white my-1.5 text-[#ffc20d] transition duration-300"
                           >

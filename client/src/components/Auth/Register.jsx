@@ -68,7 +68,7 @@ const Form = ({
   return (
     <div className="bg-[#212121]">
       <section>
-        <div className="flex flex-col items-center justify-center px-6 py-6 mx-auto md:h-screen lg:py-0">
+        <div className="flex flex-col items-center justify-center px-6 py-6 mx-auto h-screen lg:py-0">
           <div className="w-full  rounded-lg shadow-md bg-[#272727] md:mt-0 sm:max-w-md xl:p-0 ">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 className="text-xl font-bold leading-tight tracking-tight  md:text-2xl text-white">
