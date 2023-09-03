@@ -10,9 +10,11 @@ const AddRecipes = () => {
   const [cookies] = useCookies(["access_token"]);
   const [recipe, setRecipe] = useState({
     name: "",
+    description: "",
     ingredients: [],
-    instructions: "",
+    instructions: [],
     imageUrl: "",
+    diet: "",
     cookingTime: 0,
     userOwner: userID,
   });
@@ -24,13 +26,36 @@ const AddRecipes = () => {
 
   const handleIngredientChange = (event, idx) => {
     const { value } = event.target;
-    const ingredients = recipe.ingredients;
+    const ingredients = [...recipe.ingredients];
     ingredients[idx] = value;
     setRecipe({ ...recipe, ingredients });
   };
 
-  const addIngredients = () => {
+  const handleInstructionChange = (event, idx) => {
+    const { value } = event.target;
+    const instructions = [...recipe.instructions];
+    instructions[idx] = value;
+    setRecipe({ ...recipe, instructions });
+  };
+
+  const addIngredient = () => {
     setRecipe({ ...recipe, ingredients: [...recipe.ingredients, ""] });
+  };
+
+  const removeIngredient = (idx) => {
+    const ingredients = [...recipe.ingredients];
+    ingredients.splice(idx, 1);
+    setRecipe({ ...recipe, ingredients });
+  };
+
+  const addInstruction = () => {
+    setRecipe({ ...recipe, instructions: [...recipe.instructions, ""] });
+  };
+
+  const removeInstruction = (idx) => {
+    const instructions = [...recipe.instructions];
+    instructions.splice(idx, 1);
+    setRecipe({ ...recipe, instructions });
   };
 
   const onSubmit = async (event) => {
@@ -45,6 +70,7 @@ const AddRecipes = () => {
       console.error(err);
     }
   };
+
   return (
     <div className="bg-[#212121] min-h-screen pt-20 md:pt-10">
       <section>
@@ -70,10 +96,43 @@ const AddRecipes = () => {
                     type="text"
                     id="name"
                     name="name"
-                    // placeholder="Oden"
                     className="sm:text-sm rounded-lg focus:ring-[#ffc20d] text-white border-0 focus:border-primary-600 block w-full p-2.5 bg-[#1c1c1c]"
                     onChange={handleChange}
                   />
+                </div>
+                <div>
+                  <label
+                    htmlFor="description"
+                    className="block mb-2 text-sm font-medium text-white"
+                  >
+                    Description
+                  </label>
+                  <textarea
+                    id="description"
+                    name="description"
+                    rows="4"
+                    className="sm:text-sm rounded-lg focus:ring-[#ffc20d] text-white border-0 focus:border-primary-600 block w-full p-2.5 bg-[#1c1c1c]"
+                    onChange={handleChange}
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="diet"
+                    className="block mb-2 text-sm font-medium text-white"
+                  >
+                    Diet (Veg/Non-Veg)
+                  </label>
+                  <select
+                    name="diet"
+                    id="diet"
+                    className="sm:text-sm rounded-lg focus:ring-[#ffc20d] text-white border-0 focus:border-primary-600 block w-full p-2.5 bg-[#1c1c1c]"
+                    onChange={handleChange}
+                    value={recipe.diet}
+                  >
+                    <option value="">Select Diet</option>
+                    <option value="veg">Vegetarian</option>
+                    <option value="non-veg">Non-Vegetarian</option>
+                  </select>
                 </div>
                 <div>
                   <label
@@ -83,17 +142,103 @@ const AddRecipes = () => {
                     Ingredients
                   </label>
                   {recipe.ingredients.map((ingredient, idx) => (
-                    <input
-                      key={idx}
-                      type="text"
-                      name="ingredients"
-                      className="sm:text-sm my-2 rounded-lg focus:ring-[#ffc20d] text-white border-0 focus:border-primary-600 block w-full p-2.5 bg-[#1c1c1c]"
-                      value={ingredient}
-                      onChange={(event) => handleIngredientChange(event, idx)}
-                    />
+                    <div key={idx} className="flex space-x-2 my-2">
+                      <input
+                        type="text"
+                        name="ingredients"
+                        className="sm:text-sm rounded-lg focus:ring-[#ffc20d] text-white border-0 focus:border-primary-600 block w-full p-2.5 bg-[#1c1c1c]"
+                        value={ingredient}
+                        onChange={(event) => handleIngredientChange(event, idx)}
+                      />
+                      {idx > 0 && (
+                        <button
+                          type="button"
+                          onClick={() => removeIngredient(idx)}
+                          className="text-red-500"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M7 18a1 1 0 0 1-.707-1.707l10-10a1 1 0 0 1 1.414 1.414l-10 10A.997.997 0 0 1 7 18Z"
+                            />
+                            <path
+                              fill="currentColor"
+                              d="M17 18a.997.997 0 0 1-.707-.293l-10-10a1 1 0 0 1 1.414-1.414l10 10A1 1 0 0 1 17 18Z"
+                            />
+                          </svg>
+                        </button>
+                      )}
+                    </div>
                   ))}
                   <button
-                    onClick={addIngredients}
+                    onClick={addIngredient}
+                    className="text-[#ffc20d]"
+                    type="button"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M18 10h-4V6a2 2 0 0 0-4 0l.071 4H6a2 2 0 0 0 0 4l4.071-.071L10 18a2 2 0 0 0 4 0v-4.071L18 14a2 2 0 0 0 0-4z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="instructions"
+                    className="block text-sm mb-2 font-medium text-white"
+                  >
+                    Instructions
+                  </label>
+                  {recipe.instructions.map((instruction, idx) => (
+                    <div key={idx} className="flex space-x-2 my-2">
+                      <textarea
+                        rows="4"
+                        name="instructions"
+                        className="sm:text-sm rounded-lg focus:ring-[#ffc20d] text-white border-0 focus:border-primary-600 block w-full p-2.5 bg-[#1c1c1c]"
+                        value={instruction}
+                        onChange={(event) =>
+                          handleInstructionChange(event, idx)
+                        }
+                      />
+                      {idx > 0 && (
+                        <button
+                          type="button"
+                          onClick={() => removeInstruction(idx)}
+                          className="text-red-500"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M7 18a1 1 0 0 1-.707-1.707l10-10a1 1 0 0 1 1.414 1.414l-10 10A.997.997 0 0 1 7 18Z"
+                            />
+                            <path
+                              fill="currentColor"
+                              d="M17 18a.997.997 0 0 1-.707-.293l-10-10a1 1 0 0 1 1.414-1.414l10 10A1 1 0 0 1 17 18Z"
+                            />
+                          </svg>
+                        </button>
+                      )}
+                    </div>
+                  ))}
+                  <button
+                    onClick={addInstruction}
                     className="text-[#ffc20d]"
                     type="button"
                   >
@@ -112,21 +257,6 @@ const AddRecipes = () => {
                 </div>
                 <div>
                   <label
-                    htmlFor="Instructions"
-                    className="block mb-2 text-sm font-medium text-white"
-                  >
-                    Instructions
-                  </label>
-                  <input
-                    type="text"
-                    name="instructions"
-                    // placeholder="Oden Wouldn't Be Oden If It Wasn't Boiled"
-                    className="sm:text-sm rounded-lg focus:ring-[#ffc20d] text-white border-0 focus:border-primary-600 block w-full p-2.5 bg-[#1c1c1c]"
-                    onChange={handleChange}
-                  />
-                </div>
-                <div>
-                  <label
                     htmlFor="imageUrl"
                     className="block mb-2 text-sm font-medium text-white"
                   >
@@ -134,7 +264,6 @@ const AddRecipes = () => {
                   </label>
                   <input
                     type="text"
-                    // placeholder="Paste image URL"
                     name="imageUrl"
                     className="sm:text-sm rounded-lg focus:ring-[#ffc20d] text-white border-0 focus:border-primary-600 block w-full p-2.5 bg-[#1c1c1c]"
                     onChange={handleChange}
@@ -149,7 +278,6 @@ const AddRecipes = () => {
                   </label>
                   <input
                     type="number"
-                    // placeholder="Cooking Time"
                     name="cookingTime"
                     className="sm:text-sm rounded-lg focus:ring-[#ffc20d] text-white border-0 focus:border-primary-600 block w-full p-2.5 bg-[#1c1c1c]"
                     onChange={handleChange}

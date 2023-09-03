@@ -108,7 +108,7 @@ const MyRecipes = () => {
                             </h1>
                           </h2>
                           <p className="leading-relaxed text-left mb-5">
-                            {recipe.instructions.substring(0, 100)} ...
+                            {recipe.description.substring(0, 100)}
                           </p>
                           <div className="flex items-center justify-between flex-wrap ">
                             <div className="inline-flex items-center md:mb-2 lg:mb-0">
@@ -126,33 +126,9 @@ const MyRecipes = () => {
                               </svg>
                               {recipe.cookingTime} min
                             </div>
-                            {/* <button
-                             onClick={() => generatePDF(recipe)}
-                             className="hover:text-white text-[#ffc20d] transition duration-300"
-                           >
-                             <svg
-                               xmlns="http://www.w3.org/2000/svg"
-                               width="25"
-                               height="25"
-                               viewBox="0 0 16 16"
-                             >
-                               <g
-                                 fill="none"
-                                 stroke="currentColor"
-                                 stroke-linecap="round"
-                                 stroke-linejoin="round"
-                                 stroke-width="1.5"
-                               >
-                                 <circle cx="4" cy="8" r="2.25" />
-                                 <circle cx="12" cy="12" r="2.25" />
-                                 <circle cx="12" cy="4" r="2.25" />
-                                 <path d="m6 9l4 2M6 7l4-2" />
-                               </g>
-                             </svg>
-                           </button> */}
                           </div>
                         </div>
-                      </div>{" "}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -193,6 +169,39 @@ const MyRecipes = () => {
                         />
                       </svg>
                     </button>
+                    <div className="absolute right-0 bg-[#272727] md:p-3 p-2 text-[#ffc20d] hover:text-[#e8b416] rounded-md m-5">
+                      {selectedRecipe.diet === "veg" ? (
+                        <div className="flex justify-center items-center flex-col">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="32"
+                            height="32"
+                            viewBox="0 0 24 24"
+                            className="text-green-500"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M20 4v16H4V4h16m2-2H2v20h20V2M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6s6-2.69 6-6s-2.69-6-6-6Z"
+                            />
+                          </svg>
+                        </div>
+                      ) : (
+                        <div className="flex justify-center items-center flex-col">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="32"
+                            height="32"
+                            viewBox="0 0 24 24"
+                            className="text-red-500"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M20 4v16H4V4h16m2-2H2v20h20V2M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6s6-2.69 6-6s-2.69-6-6-6Z"
+                            />
+                          </svg>
+                        </div>
+                      )}
+                    </div>
                     <img
                       className="lg:h-96 h-60 w-full object-cover object-center"
                       src={selectedRecipe.imageUrl}
@@ -285,10 +294,22 @@ const MyRecipes = () => {
                           Share
                         </button>
                       </div>
-                      <p className="leading-relaxed mb-3">
-                        {selectedRecipe.instructions}
-                      </p>
-                      <div className="my-5">
+
+                      <div className="leading-relaxed">
+                        <h3 className="text-gray-100 mb-2">Instructions</h3>
+                        {selectedRecipe.instructions.map(
+                          (instruction, index) => (
+                            <div className="pb-5">
+                              <span key={index}>
+                                {instruction}
+                                <br />
+                              </span>
+                            </div>
+                          )
+                        )}
+                      </div>
+
+                      <div className="mb-5">
                         <h3 className="text-gray-100 mb-2">Ingredients</h3>
                         <ul className="list-disc list-inside">
                           {selectedRecipe.ingredients.map(

@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useGetUserID } from "../hooks/useGetUserID";
 import { useCookies } from "react-cookie";
@@ -50,6 +49,20 @@ const AllRecipes = () => {
   const [savedRecipes, setSavedRecipes] = useState([]);
   const [cookies] = useCookies(["access_token"]);
 
+  const [selectedDiet, setSelectedDiet] = useState(null);
+
+  const filterRecipesByDiet = (diet) => {
+    setSelectedDiet(diet);
+  };
+
+  const clearFilter = () => {
+    setSelectedDiet(null);
+  };
+
+  const filteredRecipes = selectedDiet
+    ? recipe.filter((recipeItem) => recipeItem.diet === selectedDiet)
+    : recipe;
+
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
@@ -88,6 +101,7 @@ const AllRecipes = () => {
       console.error(err);
     }
   };
+
   const isRecipeSaved = (id) => savedRecipes && savedRecipes.includes(id);
 
   // For modal
@@ -113,8 +127,41 @@ const AllRecipes = () => {
           Meal Category
         </h1>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-10 px-5">
-        {recipe.map((recipeItem) => (
+
+      <div className="flex px-5 md:px-10 space-x-4 py-5 pb-7">
+        <div className="space-x-4 bg-[#1c1c1c] p-3 rounded-full">
+          <button
+            onClick={clearFilter}
+            className={`${
+              !selectedDiet ? "bg-[#ffc20d] text-[#272727] font-bold" : ""
+            } px-4 py-2 md:w-32 text-white rounded-full focus:outline-none`}
+          >
+            All
+          </button>
+          <button
+            onClick={() => filterRecipesByDiet("veg")}
+            className={`${
+              selectedDiet === "veg"
+                ? "bg-green-500 text-[#272727] font-bold"
+                : ""
+            } px-4 py-2 md:w-32 text-white rounded-full focus:outline-none`}
+          >
+            Veg
+          </button>
+          <button
+            onClick={() => filterRecipesByDiet("non-veg")}
+            className={`${
+              selectedDiet === "non-veg"
+                ? "bg-red-500 text-[#272727] font-bold"
+                : ""
+            } px-4 py-2 md:w-32 text-white rounded-full focus:outline-none`}
+          >
+            Non-Veg
+          </button>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-10 px-5">
+        {filteredRecipes.map((recipeItem) => (
           <div key={recipeItem._id}>
             <button onClick={() => openModal(recipeItem)}>
               <section className="body-font text-gray-400">
@@ -168,7 +215,7 @@ const AllRecipes = () => {
                             </button>
                           </h2>
                           <p className="leading-relaxed text-left mb-5">
-                            {recipeItem.instructions.substring(0, 100)} ...
+                            {recipeItem.description.substring(0, 100)}
                           </p>
                           <div className="flex items-center justify-between flex-wrap ">
                             <div className="inline-flex items-center md:mb-2 lg:mb-0">
@@ -186,33 +233,9 @@ const AllRecipes = () => {
                               </svg>
                               {recipeItem.cookingTime} min
                             </div>
-                            {/* <button
-                              onClick={() => generatePDF(recipeItem)}
-                              className="hover:text-white text-[#ffc20d] transition duration-300"
-                            >
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="25"
-                                height="25"
-                                viewBox="0 0 16 16"
-                              >
-                                <g
-                                  fill="none"
-                                  stroke="currentColor"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="1.5"
-                                >
-                                  <circle cx="4" cy="8" r="2.25" />
-                                  <circle cx="12" cy="12" r="2.25" />
-                                  <circle cx="12" cy="4" r="2.25" />
-                                  <path d="m6 9l4 2M6 7l4-2" />
-                                </g>
-                              </svg>
-                            </button> */}
                           </div>
                         </div>
-                      </div>{" "}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -253,6 +276,39 @@ const AllRecipes = () => {
                         />
                       </svg>
                     </button>
+                    <div className="absolute right-0 bg-[#272727] md:p-3 p-2 text-[#ffc20d] hover:text-[#e8b416] rounded-md m-5">
+                      {selectedRecipe.diet === "veg" ? (
+                        <div className="flex justify-center items-center flex-col">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="32"
+                            height="32"
+                            viewBox="0 0 24 24"
+                            className="text-green-500"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M20 4v16H4V4h16m2-2H2v20h20V2M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6s6-2.69 6-6s-2.69-6-6-6Z"
+                            />
+                          </svg>
+                        </div>
+                      ) : (
+                        <div className="flex justify-center items-center flex-col">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="32"
+                            height="32"
+                            viewBox="0 0 24 24"
+                            className="text-red-500"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M20 4v16H4V4h16m2-2H2v20h20V2M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6s6-2.69 6-6s-2.69-6-6-6Z"
+                            />
+                          </svg>
+                        </div>
+                      )}
+                    </div>
                     <img
                       className="lg:h-96 h-60 w-full object-cover object-center"
                       src={selectedRecipe.imageUrl}
@@ -345,10 +401,21 @@ const AllRecipes = () => {
                           Share
                         </button>
                       </div>
-                      <p className="leading-relaxed mb-3">
-                        {selectedRecipe.instructions}
-                      </p>
-                      <div className="my-5">
+                      <div className="leading-relaxed">
+                        <h3 className="text-gray-100 mb-2">Instructions</h3>
+                        {selectedRecipe.instructions.map(
+                          (instruction, index) => (
+                            <div className="pb-5">
+                              <span key={index}>
+                                {instruction}
+                                <br />
+                              </span>
+                            </div>
+                          )
+                        )}
+                      </div>
+
+                      <div className="mb-5">
                         <h3 className="text-gray-100 mb-2">Ingredients</h3>
                         <ul className="list-disc list-inside">
                           {selectedRecipe.ingredients.map(
