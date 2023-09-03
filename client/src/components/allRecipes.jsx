@@ -133,8 +133,10 @@ const AllRecipes = () => {
           <button
             onClick={clearFilter}
             className={`${
-              !selectedDiet ? "bg-[#ffc20d] text-[#272727] font-bold" : ""
-            } px-4 py-2 md:w-32 text-white rounded-full focus:outline-none`}
+              !selectedDiet
+                ? "bg-[#ffc20d] text-[#272727] font-bold"
+                : "text-white"
+            } px-4 py-2 md:w-32 rounded-full focus:outline-none`}
           >
             All
           </button>
@@ -143,8 +145,8 @@ const AllRecipes = () => {
             className={`${
               selectedDiet === "veg"
                 ? "bg-green-500 text-[#272727] font-bold"
-                : ""
-            } px-4 py-2 md:w-32 text-white rounded-full focus:outline-none`}
+                : "text-white"
+            } px-4 py-2 md:w-32 rounded-full focus:outline-none`}
           >
             Veg
           </button>
@@ -153,8 +155,8 @@ const AllRecipes = () => {
             className={`${
               selectedDiet === "non-veg"
                 ? "bg-red-500 text-[#272727] font-bold"
-                : ""
-            } px-4 py-2 md:w-32 text-white rounded-full focus:outline-none`}
+                : "text-white"
+            } px-4 py-2 md:w-32 rounded-full focus:outline-none`}
           >
             Non-Veg
           </button>
@@ -215,7 +217,7 @@ const AllRecipes = () => {
                             </button>
                           </h2>
                           <p className="leading-relaxed text-left mb-5">
-                            {recipeItem.description.substring(0, 100)}
+                            {recipeItem.description.substring(0, 135)}. . .
                           </p>
                           <div className="flex items-center justify-between flex-wrap ">
                             <div className="inline-flex items-center md:mb-2 lg:mb-0">

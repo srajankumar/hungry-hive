@@ -209,7 +209,7 @@ const Searchbar = () => {
                                     </button>
                                   </h2>
                                   <p className="leading-relaxed text-left mb-5">
-                                    {recipe.description.substring(0, 100)}
+                                    {recipe.description.substring(0, 135)}. . .
                                   </p>
                                   <div className="flex items-center justify-between flex-wrap ">
                                     <div className="inline-flex items-center md:mb-2 lg:mb-0">
