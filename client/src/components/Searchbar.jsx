@@ -52,7 +52,9 @@ const Searchbar = () => {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/recipes");
+        const response = await axios.get(
+          "https://hungry-hive.onrender.com/recipes"
+        );
         setRecipes(response.data);
         console.log(response.data);
       } catch (err) {
@@ -63,7 +65,7 @@ const Searchbar = () => {
     const fetchSavedRecipe = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/recipesrecipes/addRecipes/ids/${userID}`
+          `https://hungry-hive.onrender.com/recipesrecipes/addRecipes/ids/${userID}`
         );
         setSavedRecipes(response.data.savedRecipes);
       } catch (err) {
@@ -78,7 +80,7 @@ const Searchbar = () => {
   const saveRecipe = async (recipeID) => {
     try {
       const response = await axios.put(
-        "http://localhost:3001/recipes",
+        "https://hungry-hive.onrender.com/recipes",
         { recipeID, userID },
         { headers: { authorization: cookies.access_token } }
       );
@@ -112,9 +114,12 @@ const Searchbar = () => {
           setSearchResult([]);
           return;
         }
-        const res = await axios.get("http://localhost:3001/recipes", {
-          params: { key: key, limit: 5 },
-        });
+        const res = await axios.get(
+          "https://hungry-hive.onrender.com/recipes",
+          {
+            params: { key: key, limit: 5 },
+          }
+        );
 
         // Filter search results based on first letters of recipe names
         const filteredResults = res.data.filter((recipe) =>

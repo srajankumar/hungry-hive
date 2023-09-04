@@ -66,7 +66,9 @@ const AllRecipes = () => {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/recipes");
+        const response = await axios.get(
+          "https://hungry-hive.onrender.com/recipes"
+        );
         setRecipes(response.data);
         console.log(response.data);
       } catch (err) {
@@ -77,7 +79,7 @@ const AllRecipes = () => {
     const fetchSavedRecipe = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/recipesrecipes/addRecipes/ids/${userID}`
+          `https://hungry-hive.onrender.com/recipesrecipes/addRecipes/ids/${userID}`
         );
         setSavedRecipes(response.data.savedRecipes);
       } catch (err) {
@@ -92,7 +94,7 @@ const AllRecipes = () => {
   const saveRecipe = async (recipeID) => {
     try {
       const response = await axios.put(
-        "http://localhost:3001/recipes",
+        "https://hungry-hive.onrender.com/recipes",
         { recipeID, userID },
         { headers: { authorization: cookies.access_token } }
       );

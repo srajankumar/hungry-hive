@@ -22,10 +22,13 @@ const LogIn = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/auth/login", {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        "https://hungry-hive.onrender.com/auth/login",
+        {
+          username,
+          password,
+        }
+      );
 
       // if (response.data.user) {
       setCookies("access_token", response.data.token);
