@@ -403,6 +403,12 @@ const AllRecipes = () => {
                           Share
                         </button>
                       </div>
+
+                      <div className="leading-relaxed mb-5">
+                        <h3 className="text-gray-100 mb-2">Description</h3>
+                        {selectedRecipe.description}
+                      </div>
+
                       <div className="leading-relaxed">
                         <h3 className="text-gray-100 mb-2">Instructions</h3>
                         {selectedRecipe.instructions.map(

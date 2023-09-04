@@ -20,10 +20,13 @@ const Hero = () => {
           <img src="/assets/carousel/zero.jpg" alt="..." />
         </div>
         <div className="h-56 md:h-[50vh] flex justify-center items-center ease-in transition duration-300">
-          <img src="/assets/carousel/one.jpg" alt="..." />
+          <img src="/assets/carousel/three.jpg" alt="..." />
         </div>
         <div className="h-56 md:h-[50vh] flex justify-center items-center ease-in transition duration-300">
-          <img src="/assets/carousel/three.jpg" alt="..." />
+          <img src="/assets/carousel/six.jpg" alt="..." />
+        </div>
+        <div className="h-56 md:h-[50vh] flex justify-center items-center ease-in transition duration-300">
+          <img src="/assets/carousel/four.jpg" alt="..." />
         </div>
       </Carousel>
     </div>
