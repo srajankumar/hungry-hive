@@ -6,6 +6,7 @@ import { verifyToken } from "./users.js";
 
 const router = express.Router();
 
+// Retrieve all recipes from the database
 router.get("/", async (req, res) => {
   try {
     const response = await RecipeModel.find({});
@@ -15,6 +16,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Create a new recipe using data from the request body
 router.post("/", verifyToken, async (req, res) => {
   const recipe = new RecipeModel(req.body);
   try {
@@ -25,6 +27,7 @@ router.post("/", verifyToken, async (req, res) => {
   }
 });
 
+// Add a recipe to a user's list of saved recipes
 router.put("/", verifyToken, async (req, res) => {
   try {
     const recipe = await RecipeModel.findById(req.body.recipeID);
@@ -37,6 +40,7 @@ router.put("/", verifyToken, async (req, res) => {
   }
 });
 
+// Fetch saved recipe IDs for a user
 router.get("/addRecipes/ids/:userID", async (req, res) => {
   try {
     const user = await UserModel.findById(req.params.userID);
@@ -46,6 +50,7 @@ router.get("/addRecipes/ids/:userID", async (req, res) => {
   }
 });
 
+// Fetch and return the actual saved recipes for a user
 router.get("/myRecipes/:userID", async (req, res) => {
   try {
     const user = await UserModel.findById(req.params.userID);
