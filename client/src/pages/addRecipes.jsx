@@ -4,6 +4,8 @@ import { useGetUserID } from "../hooks/useGetUserID.js";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
+const server = process.env.REACT_APP_SERVER_URL;
+
 const AddRecipes = () => {
   const userID = useGetUserID();
   const navigate = useNavigate();
@@ -61,7 +63,7 @@ const AddRecipes = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("https://hungry-hive.onrender.com/recipes", recipe, {
+      await axios.post(`${server}/recipes`, recipe, {
         headers: { authorization: cookies.access_token },
       });
       alert("Recipe Added!");

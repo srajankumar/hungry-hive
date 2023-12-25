@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
+const server = process.env.REACT_APP_SERVER_URL;
+
 export const Register = () => {
   return (
     <div>
@@ -25,7 +27,7 @@ const SignIn = () => {
       return;
     }
     try {
-      await axios.post("https://hungry-hive.onrender.com/auth/register", {
+      await axios.post(`${server}/auth/register`, {
         email,
         username,
         password,

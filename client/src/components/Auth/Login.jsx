@@ -4,6 +4,8 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
+const server = process.env.REACT_APP_SERVER_URL;
+
 export const Login = () => {
   return (
     <div>
@@ -22,13 +24,10 @@ const LogIn = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(
-        "https://hungry-hive.onrender.com/auth/login",
-        {
-          username,
-          password,
-        }
-      );
+      const response = await axios.post(`${server}/auth/login`, {
+        username,
+        password,
+      });
 
       // if (response.data.user) {
       setCookies("access_token", response.data.token);

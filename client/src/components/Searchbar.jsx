@@ -5,6 +5,8 @@ import { useCookies } from "react-cookie";
 import Modal from "react-modal";
 import jsPDF from "jspdf";
 
+const server = process.env.REACT_APP_SERVER_URL;
+
 const generatePDF = (recipe) => {
   const pdf = new jsPDF();
   const margin = 20;
@@ -52,9 +54,7 @@ const Searchbar = () => {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const response = await axios.get(
-          "https://hungry-hive.onrender.com/recipes"
-        );
+        const response = await axios.get(`${server}/recipes`);
         setRecipes(response.data);
         console.log(response.data);
       } catch (err) {
@@ -65,7 +65,7 @@ const Searchbar = () => {
     const fetchSavedRecipe = async () => {
       try {
         const response = await axios.get(
-          `https://hungry-hive.onrender.com/recipesrecipes/addRecipes/ids/${userID}`
+          `${server}/recipesrecipes/addRecipes/ids/${userID}`
         );
         setSavedRecipes(response.data.savedRecipes);
       } catch (err) {
@@ -80,7 +80,7 @@ const Searchbar = () => {
   const saveRecipe = async (recipeID) => {
     try {
       const response = await axios.put(
-        "https://hungry-hive.onrender.com/recipes",
+        `${server}/recipes`,
         { recipeID, userID },
         { headers: { authorization: cookies.access_token } }
       );
@@ -114,12 +114,9 @@ const Searchbar = () => {
           setSearchResult([]);
           return;
         }
-        const res = await axios.get(
-          "https://hungry-hive.onrender.com/recipes",
-          {
-            params: { key: key, limit: 5 },
-          }
-        );
+        const res = await axios.get(`${server}/recipes`, {
+          params: { key: key, limit: 5 },
+        });
 
         // Filter search results based on first letters of recipe names
         const filteredResults = res.data.filter((recipe) =>
